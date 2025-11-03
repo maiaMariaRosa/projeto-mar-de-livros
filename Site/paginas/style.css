@@ -1,0 +1,24 @@
+.corpo {
+    padding: 40px;
+}
+.header {
+    border-bottom: solid #000000 2px;
+
+}
+
+.logo_header {
+    display: flex;
+    width: 30%;
+    justify-content: center;
+    margin-bottom: 15px;
+    border-bottom: solid #000000 2px;
+}
+
+.button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
