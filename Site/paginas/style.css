@@ -23,7 +23,7 @@ body {
 
 }
 
-/* Header */
+/* Header Comum*/
 
 .header {
     display: flex;
@@ -55,12 +55,52 @@ body {
     margin-top: 15px;
     border-top: solid #000000 1px;
     border-bottom: solid #000000 1px;
-    border-width: 100%;
     padding-top: 10px;
     padding-bottom: 5px;
 }
 
-/* Conteúdo */
+/* Header Branco - Cadastro e Login*/
+#bodyCadastro {
+    background-image: url('../imgs/artes-de-monet/arte-monet-cadastro-e-login.jpg');
+    background-size: cover;
+
+}
+
+.headerCadastro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    padding: 2%;
+
+}
+
+.logo_headerBranco {
+    width: 20%;
+
+}
+
+.buttonCadastro {
+    all: unset;
+    display: flex;
+    color: #ffffff;
+}
+
+.botoesCadastro {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 2%;
+    justify-content: space-around;
+    margin-top: 15px;
+    border-top: solid #ffffff 1px;
+    border-bottom: solid #ffffff 1px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+/* Conteiner */
 
 .container {
     display: flex;
@@ -70,7 +110,11 @@ body {
     height: 200px;
     margin-top: 5%;
     margin-bottom: 8%;
+    transition: 0.3s;   
 
+}
+.container:hover{
+    transform: scaleY(5px);
 }
 
 .quadrado {
@@ -90,21 +134,69 @@ body {
     height: 200px;
 }
 
+/* Container Livros preferidos */
+
 .container2 {
     display: flex;
-    width: 260px;
-    height: 280px;
+    width: 460px;
+    height: 480px;
     background-color: #ECEADE;
     border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
+    border: #000000 solid 2px;
+    margin-bottom: 50px;
+
+
 }
+
+.imagemPreferido {
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+}
+
 .tituloPrincipal {
     border-bottom: solid #000000 1px;
+    width: 90%;
+    
     
 }
-.imgPrincipal {
-    width: 200px;
-    height: 200px;
+
+.img_preferido {
+    margin-top: 30px;
+    width: 400px;
+    height: 400px;
+    
+
+}
+.paragrafo1{
+    border-bottom: solid #000000 4px;
+    width: 30%;
+    height: 60%;
+    margin-left: 40%;
+}
+
+#tituloPreferido {
+    font-size: 14px;
+    font-weight:500;
+    
+
+}
+
+/* Pagina de cadastro */
+
+.cadastro {
+    width: 92%;
+    /*border: #000000 solid 2px;*/
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input_cadastro {
+    all: unset;
+    background-color: azure;
+    border-radius: 10px;
+    width: 25%;
 }
