@@ -12,12 +12,12 @@
     <div class="header">
         <img class="logo_header" src="../imgs/mar-de-livros-com-fundo.png" alt="">
         <div class="botoes">
-            <button class="button" onclick="categorias()">CATEGORIAS</button>
-            <button class="button" onclick="sobreMim()">SOBRE MIM</button>
-            <button class="button" onclick="anne()">SESSÃO ANNE</button>
-            <button class="button" onclick="perfil()">MEU PERFIL</button>
-            <button class="button" onclick="login()">LOGIN</button>
-            <button class="button" onclick="cadastro()">CADASTRE-SE</button>
+            <button class="button" class="frank_ruhl_libre" onclick="categorias()">CATEGORIAS</button>
+            <button class="button" class="frank_ruhl_libre" onclick="sobreMim()">SOBRE MIM</button>
+            <button class="button" class="frank_ruhl_libre" onclick="anne()">SESSÃO ANNE</button>
+            <button class="button" class="frank_ruhl_libre" onclick="perfil()">MEU PERFIL</button>
+            <button class="button" class="frank_ruhl_libre" onclick="login()">LOGIN</button>
+            <button class="button" class="frank_ruhl_libre" onclick="cadastro()">CADASTRE-SE</button>
 
         </div>
     </div>
@@ -44,46 +44,67 @@
         </div>
     </div>
 
-    <p class="frank_ruhl_libre">Meu livro preferido do momento:</p>
-    <div class="container2">
-        <div class="imagemPreferido">
-            <img class="img_preferido" src="../imgs/mockups-oficiais/o-falecido-mattia-pascal.png" alt="">
-            <p class="inter" id="tituloPreferido">O Falecido Mattia Pascal - Luigi Pirandello</p>
+    <div class="livroPreferido">
+        <p class="frank_ruhl_libre">Meu livro preferido do momento:</p>
+        <div class="livroPreridoConteudo">
+            <div class="container2">
+                <div class="imagemPreferido">
+                    <img class="img_preferido" src="../imgs/mockups-oficiais/o-falecido-mattia-pascal.png" alt="">
+                    <p class="inter" id="tituloPreferido">O Falecido Mattia Pascal - Luigi Pirandello</p>
+                </div>
+            </div>
+            <div class="paragrafo1">
+                <p id="textoExplicativo1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem
+                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
+                    a
+                    galley of type and scrambled it to make a type specimen book. It has survived not only five
+                    centuries,
+                    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+                    in
+                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                    with
+                    desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                </p>
+            </div>
         </div>
-        <div class="paragrafo1">
-            <p id="textoExplicativo1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
-                the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-            </p>
-        </div>
-
     </div>
 
 
     <div class="comentarios">
 
-    </div>
+    </div class="sobreMim">
+    <p class="frank_ruhl_libre" class="tituloPrincipal">Sobre mim:</p>
+    <div class="sobreMimConteudo">
+        <div class="container3">
+            <img class="img_sobreMim" src="" alt="">
+            <p class="titulo"></p>
+        </div>
+        <div class="paragrafo2">
+            <p id="textoExplicativo2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem
+                Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
+                a
+                galley of type and scrambled it to make a type specimen book. It has survived not only five
+                centuries,
+                but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+                in
+                the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                with
+                desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+            </p>
 
-    <div class="container3">
-        <p class="frank_ruhl_libre" class="tituloPrincipal">Sobre mim:</p>
-        <img class="img_sobreMim" src="" alt="">
-        <p class="titulo"></p>
-        <p></p>
-    </div>
+            <div class="container4">
+                <p class="frank_ruhl_libre" class="tituloPrincipal">Nossa playlist:</p>
+                <img class="img_playlist" src="" alt="">
+                <p class="titulo"></p>
+                <p></p>
+            </div>
+        </div>
 
-    <div class="container4">
-        <p class="frank_ruhl_libre" class="tituloPrincipal">Nossa playlist:</p>
-        <img class="img_playlist" src="" alt="">
-        <p class="titulo"></p>
-        <p></p>
-    </div>
+        <div class="footer">
 
-    <div class="footer">
-
-    </div>
+        </div>
 
 </body>
 
@@ -105,7 +126,7 @@
 
     }
 
-    function login(){
+    function login() {
         window.location.href = 'login.html';
     }
 

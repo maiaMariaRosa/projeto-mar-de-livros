@@ -41,9 +41,10 @@ body {
 }
 
 .button {
-    all: unset;
     display: flex;
-
+    border: none;
+    background-color: white;
+    cursor: pointer;
 }
 
 .botoes {
@@ -57,6 +58,10 @@ body {
     border-bottom: solid #000000 1px;
     padding-top: 10px;
     padding-bottom: 5px;
+}
+
+.button:hover {
+    color: #899AB4;
 }
 
 /* Header Branco - Cadastro e Login*/
@@ -102,50 +107,63 @@ body {
 
 /* Conteiner */
 
+body {
+    padding: auto;
+}
+
 .container {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 92%;
-    height: 200px;
-    margin-top: 5%;
-    margin-bottom: 8%;
-    transition: 0.3s;   
+    width: 90%;
+    gap: 2%;
+    margin-bottom: 20px;
 
 }
-.container:hover{
+
+.container:hover {
     transform: scaleY(5px);
 }
 
 .quadrado {
     display: flex;
-    width: 260px;
-    height: 280px;
+    width: 15%;
     background-color: #ECEADE;
     border-radius: 10px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 2%;
 
 }
 
 .quadrado img {
-    width: 200px;
-    height: 200px;
+    width: 70%;
+
 }
 
 /* Container Livros preferidos */
+.livroPreridoConteudo {
+    display: flex;
+    gap: 25px;
+}
+
+.livroPreferido {
+    width: 92%;
+    border-top: solid #000000 1px;
+
+}
+
 
 .container2 {
     display: flex;
-    width: 460px;
-    height: 480px;
+    width: 40%;
+    height: 100%;
     background-color: #ECEADE;
     border-radius: 10px;
     flex-direction: row;
-    border: #000000 solid 2px;
     margin-bottom: 50px;
-
+    z-index: 10;
 
 }
 
@@ -155,34 +173,52 @@ body {
     padding: 3%;
 }
 
-.tituloPrincipal {
-    border-bottom: solid #000000 1px;
-    width: 90%;
-    
-    
-}
+
 
 .img_preferido {
     margin-top: 30px;
-    width: 400px;
-    height: 400px;
-    
-
+    width: 100%;
 }
-.paragrafo1{
-    border-bottom: solid #000000 4px;
-    width: 30%;
+
+.paragrafo1 {
+    display: flex;
+    width: 50%;
     height: 60%;
-    margin-left: 40%;
+    z-index: 11;
+
 }
 
 #tituloPreferido {
     font-size: 14px;
-    font-weight:500;
-    
+    font-weight: 500;
+
 
 }
 
+/* Container Sobre Mim */
+
+.sobreMim {
+    width: 92%;
+    border-top: solid #000000 1px;
+
+}
+
+.container3 {
+    display: flex;
+    width: 40%;
+    height: 100%;
+    background-color: #ECEADE;
+    border-radius: 10px;
+    flex-direction: row;
+    margin-bottom: 50px;
+    z-index: 10;
+
+}
+
+.img_sobreMim {
+    width: 70%;
+
+}
 /* Pagina de cadastro */
 
 .cadastro {
