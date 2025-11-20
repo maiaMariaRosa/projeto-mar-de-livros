@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mar de Livros | Home</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body class="inter" onload="obterDados()">
+    <!-- Aqui começa o header -->
+    <div class="header">
+        <img class="logo_header" src="./assets/imgs/mar-de-livros-com-fundo.png" alt="">
+        <div class="botoes">
+            <button class="button" onclick="categorias()">CATEGORIAS</button>
+            <button class="button" onclick="sobreMim()">SOBRE MIM</button>
+            <button class="button" onclick="anne()">SESSÃO ANNE</button>
+            <button class="button" onclick="login()">LOGIN</button>
+            <button class="button" onclick="cadastro()">CADASTRE-SE</button>
+
+        </div>
+    </div>
+    <!-- Aqui acaba o header -->
+
+    <!-- Aqui começa o primeiro carrossel -->
+    <div class="container">
+        <div class="quadrado">
+            <img src="./assets/imgs/mockups-oficiais/madona-de-cedro-cortado.png" alt="">
+            <p>A Madona de cedro - Antonio Calado</p>
+        </div>
+
+        <div class="quadrado">
+            <img src="./assets/imgs/mockups-oficiais/o-cortico-cortado.png" alt="">
+            <p>O cortiço - Aluísio de Azevedo</p>
+        </div>
+
+        <div class="quadrado">
+            <img src="./assets/imgs/mockups-oficiais/o-estrangeiro-cortado.png" alt="">
+            <p>O estrangeiro - Albert Camus</p>
+        </div>
+
+        <div class="quadrado">
+            <img src="./assets/imgs/mockups-oficiais/o-tao-da-fisica-oficial-cortado.png" alt="">
+            <p>O tao da física - Fritjof Capra</p>
+        </div>
+    </div>
+    <!-- Aqui termina o primeiro carrossel -->
+
+    <!-- Aqui começa o livro preferido -->
+
+    <div class="livroPreferido_Pai">
+        <p class="frank_ruhl_libre">Meu livro preferido do momento:</p>
+        <div class="livroPreridoConteudo">
+            <div class="container2">
+                <div class="imagemPreferido">
+                    <img class="img_preferido" src="./assets/imgs/mockups-oficiais/o-falecido-mattia-pascal.png" alt="">
+                    <p id="tituloPreferido">O Falecido Mattia Pascal - Luigi Pirandello</p>
+                </div>
+            </div>
+            <div class="paragrafo1">
+                <p id="textoExplicativo1"> A história do falecido Mattia Pascal é uma das melhores que já li. O
+                    protagonista é engraçado sem precisar ficar fazendo piadas o tempo todo. O autor consegue adicionar
+                    um tom de comédia a história muito bom e é engraçado por ser real, é uma história na qual é fácil se
+                    identificar, onde você torce e entende o protagonista, fica curioso para ver aonde ele vai chegar.
+                    <br> É divertido que mesmo o autor dando uma chance de mudança de vida muito fácil para o
+                    personagem, ainda sim você consegue se convencer e se entreter com a história.
+                    <br> É um livro cheio de filosofia e questões que instigam o pensamento sobre o significado da vida,
+                    viver emm sociedade, a mentira, e nossa pŕopria identidade e como isso influencia nossas escolhas,
+                    nossas vidas.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Aqui termina o livro preferido -->
+
+    <!-- Aqui começa os comentarios-->
+    <div class="comentariosPai">
+        <div class="comentarios">
+            <h4>Comentários</h1>
+                <div class="comentario1"> <b>user.name:</b> Que livro interessante!</div>
+                <div class="comentario2"> <b>user.name:</b> Que legal!</div>
+                <div class="comentario3" id="b_comentario"> <b>user.name:</b> Será que vende na Amazon?</div>
+                <div class="fazerComentario">
+                    <input id="form_postagem" placeholder="Deixe um comentário..." name="descricao" ></input>
+                    <button class="button_comentar" onclick="comentar()">COMENTAR</button>
+                </div>
+        </div>
+    </div>
+
+    <!-- Aqui termina os comentarios-->
+
+    <!-- Aqui começa a sessão Sobre mim-->
+    <div class="sobreMimPai">
+
+        <p class="frank_ruhl_libre" class="tituloPrincipal">Sobre mim:</p>
+
+        <div class="sobreMimConteudo">
+
+            <div class="sobreMim" id="sobreMim">
+                <div class="paragrafo2">
+                    <p id="textoExplicativo2"> <b>Quem sou eu?</b> <br> <br>
+                        Meu nome é Maria Rosa, tenho 22 anos, meu signo é de áries, caso isso seja importante para
+                        alguém. E eu amo ler! Sério, amo mesmo, eu leio qualquer coisa, eu preciso da leitura, porque
+                        ver letras juntas formando palavras e frases é como ter ar para respirar. Mas claro, nesses anos
+                        como leitora eu descobri alguns nichos dos quais eu mais gosto, eu adoro livros de romance, e se
+                        envolve filosofia tem mais chance de me interessar e eu amo livros que fazem ligações e conexões
+                        de conhecimento, como por exemplo o Tao da Física de Fritjof Capra, um livro que mostra uma
+                        conexão entre o estudo da física e as religiões orientais. Aqui neste site pretendo compartilhar
+                        meus pontos de vista! <br>
+                    </p>
+                </div>
+                <div class="container3">
+                    <img class="img_sobreMim" src="./assets/imgs/minha-foto-perfil - Editado.jpg" alt="">
+                    <p><b><i>Maria Rosa</i></b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="banner">
+        <img src="./assets/imgs/artes-de-monet/monet-jardim-em-giverny-banner.png" alt="">
+    </div>
+    <!-- Aqui termina a sessão Sobre mim-->
+    <!-- Aqui começa a sessão Questionário-->
+    <div class="questionario">
+        <div class="questionarioConteudo">
+            <p class="tituloQuestionario">
+                Qual seu gênero de livro preferido?
+            </p>
+            <div id="opcoes" class="opcoes">
+                <span>
+                    <input type="checkbox" value="primeiraOpcao" id="primeiraOpcao" name="option"
+                        value="alternativaA" />
+                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm">Romance</label>
+                </span>
+                <span>
+                    <input type="checkbox" value="segundaOpcao" id="segundaOpcao" name="option" value="alternativaB" />
+                    <label for="segundaOpcao" class="option" id="labelOpcaoDois">Terror</label>
+                </span>
+                <span>
+                    <input type="checkbox" value="terceiraOpcao" id="terceiraOpcao" name="option"
+                        value="alternativaC" />
+                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres">Fantasia</label>
+                </span>
+                <span>
+                    <input type="checkbox" value="quartaOpcao" id="quartaOpcao" name="option" value="alternativaD" />
+                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro">Ação</label>
+                </span>
+            </div>
+            <button class="button_comentar" id="button_votar" onclick="votar()">VOTAR</button>
+        </div>
+    </div>
+
+    <!-- Aqui começa a sessão playlist-->
+    <div class="playlist">
+        <p class="frank_ruhl_libre" class="tituloPrincipal">Nossa playlist:</p>
+        <div><iframe data-testid="embed-iframe" style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/3Rc0WOCujl7pMvsp8kq8n3?utm_source=generator" width="40%"
+                height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe></div>
+
+    </div>
+    <!-- Aqui termina a sessão playlist-->
+
+    <!-- Aqui começa o footer-->
+    <div class="footer">
+        <div class="conteudoFooter">
+            <img src="./assets/imgs/mar-de-livros-com-fundo.png" alt="">
+
+
+            <div class="direitosAutorais">
+                <p>2025 © Todos os Direitos Reservados - Mar de Livros </p>
+            </div>
+
+            <div class="redesSociaisPai">
+                <div class="redesSociais">
+                    <p><img width="8%" src="./assets/imgs/icones/Design sem nome/2.png" alt="">
+                        @mar_de_livros</p>
+                    <p><img width="8%" src="./assets/imgs/icones/Design sem nome/1.png" alt="">
+                        Mar de Livros</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Aqui termina o footer-->
+
+</body>
+
+</html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_comentario.innerHTML = sessionStorage.COMENTARIO;
+
+    function categorias() {
+
+    }
+
+    function sobreMim() {
+        window.location.href = '#sobreMim';
+
+    }
+
+    function anne() {
+        window.location.href = 'sessaoAnne.html';
+
+    }
+
+    function login() {
+        window.location.href = 'login.html';
+    }
+
+    function cadastro() {
+        window.location.href = 'cadastro.html';
+    }
+
+    // Funções para armazenar comentários
+
+    window.onload = function () {
+        obterDados();
+    }
+
+    function prepararDados(resposta) {
+        var dadosTratados = {
+            fkUfkUsuarioser: [],
+            comentario: []
+        }
+
+        for (var i = 0; i < resposta.length; i++) {
+            dadosTratados.nome.push(resposta[i].nome);
+            dadosTratados.comentario.push(resposta[i].comentario);
+        }
+
+        return dadosTratados;
+    }
+
+    function obterDados() {
+        fetch(`/comentariosIndex/comentariosRota`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    var dados = prepararDados(resposta);
+                    plotarGrafico(dados);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    var postagem = form_postagem.value.trim();
+    
+    function comentar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        
+        var corpo = {
+            comentario: postagem
+        }
+
+        fetch(`/comentariosIndex/cadastrarComentario`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Post realizado com sucesso!");
+                limparFormulario();
+                finalizarAguardar();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+    // Funções questionário
+    var listaDeOpcoes = {
+        Romance: [],
+        Terror: [],
+        Fantasia: [],
+        Ação: []
+    }
+
+</script>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bibliotecas Diagrama de Venn -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/venn.js@0.2.20/build/venn.min.js"></script>
+
+
+    <title>Mar de Livros | Meu perfil</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body class="inter" onload="obterDados()">
+    <!-- Aqui começa o header -->
+    <div class="header">
+        <img class="logo_header" src="./assets/imgs/mar-de-livros-com-fundo.png" alt="">
+        <div class="botoes">
+            <button class="button" onclick="categorias()">CATEGORIAS</button>
+            <button class="button" onclick="anne()">SESSÃO ANNE</button>
+            <button class="button" onclick="index()">HOME</button>
+
+        </div>
+    </div>
+    <!-- Aqui acaba o header -->
+
+    <!-- Aqui começa a edição do perfil -->
+    <div class="edicaoPerfil">
+        <div class="container3">
+            <img class="img_sobreMim" src="./assets/imgs/minha-foto-perfil - Editado.jpg" alt="">
+            <p id="b_usuario"><b><i>Maria Rosa </i></b></p>
+        </div>
+        <div class="descricao">
+            <h2>Descrição</h2>
+            <div class="descricaoConteudo" id="id_descricaoConteudo" style="display: block;">
+                <div class="inputDescricaoPai">
+                    <div class="inputDescricao">
+                        Livro preferido:
+                        <input class="input_descricao" type="text" id="input_livro">
+                    </div>
+                    <div class="input_descricao">
+                        Gênero de leitura preferido:
+                        <input class="input_descricao" type="text" id="input_genero">
+                    </div>
+                </div>
+                Bios:
+                <textarea placeholder="Escreva um pouco sobre você..." name="descricao" id="textarea_descricao"
+                    maxlength="200" rows="5"></textarea>
+                <button class="button_comentar" oninput="editar()">EDITAR</button>
+                <br>
+            </div>
+
+            <!-- Bios Atualizada 
+            <div id="respostaBios" style="display: none;">
+                <div>
+                    <div class="inputDescricaoPai">
+                    <div class=" inputDescricao">
+                        Livro preferido:
+                        <div id="div_LivroBios"></div>
+                    </div>
+                    <div class="input_descricao">
+                        Gênero de leitura preferido:
+                        <div id="div_generoBios"></div>
+                    </div>
+
+                </div>
+                Bios:
+                <div id="div_Bios"></div>
+                <button class="button_comentar" oninput="editar()">EDITAR</button>
+            </div>-->
+        </div>
+    </div>
+    </div>
+    <div id="div_mensagem"></div>
+
+    <!-- Aqui termina a descricao-->
+
+    <!-- Aqui começa o gráfico-->
+    <div class="graficoPai">
+        <div class="grafico">
+            <div>
+                <canvas class="myChart" id="myChart"></canvas>
+            </div>
+        </div>
+
+    <!-- KPI's -->
+
+        <div class="kpis">
+            <div class="labels">
+                <div class="labelPai">
+                    <div class="label1"></div>Acima do Esperado
+                </div>
+                <div class="labelPai">
+                    <div class="label2"></div>Dentro do Esperado
+                </div>
+                <div class="labelPai">
+                    <div class="label3"></div>Abaixo do Esperado
+                </div>
+            </div>
+
+            <div class="kpi1" id="kpi1">
+                <h1>20</h1>
+                <div>Média de comentários por dia</div>
+            </div>
+            <div class="kpi2" id="kpi2">
+                <h1>10</h1>
+                <div>Média de cadastros no site por mês</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aqui começa o Diagrama de Venn-->
+
+    <div class="diagramaDeVennPai">
+        <div class="diagramaDeVennConteudo">
+            <p class="diagramaTitulo">Pesquisa: Gênero de livros preferidos</p>
+            <div class="conteudoDiagrama">
+                <div id="diagramaDeVenn"></div>
+                <div class="gostosDiagrama">
+                    <p id="gostos">Gostos</p>
+                    Livros de Romance: 
+                    Livros de Terror:
+                    Livros de Fantasia:
+                    Livros de Ação:
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+    window.onload = function () {
+        obterDados();
+    }
+
+    listaBio = {
+        livro: [],
+        genero: [],
+        descricao: []
+    };
+
+    /*function editar() {
+        var livro = input_livro.value;
+        var genero = input_genero.value;
+        var descricao = textarea_descricao.value;
+
+        listaBio.livro.push(livro);
+        livroBio.genero.push(genero);
+        livroBio.descricao.push(descricao);
+
+        document.getElementById('id_descricaoConteudo').style.display = 'none';
+        document.getElementById('respostaBios').style.display = 'block';
+
+
+        div_livroBios.innerHTML = `Livro preferido: ${listaBio.livro[listaBio.livro.length - 1]}`
+        div_generoBios.innerHTML = `Gênero de leitura preferido: ${listaBio.genero[listaBio.descricao.length - 1]}`
+        div_bios.innerHTML = `Descrição: ${livroBio.descricao[livroBio.descricao.length - 1]}`
+
+    }*/
+
+   // Ir para outras páginas
+    function categorias() {
+
+    }
+
+
+    function anne() {
+        window.location.href = 'sessaoAnne.html';
+
+    }
+
+    function index() {
+        window.location.href = 'index.html';
+    }
+
+    // Funções para gráfico
+
+    function plotarGrafico(dados) {
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dados.label,
+                datasets: [{
+                    label: 'Comentários por Dia',
+                    data: dados.data,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    function prepararDados(resposta) {
+        var dadosTratados = {
+            label: [],
+            data: []
+        }
+
+        for (var i = 0; i < resposta.length; i++) {
+            dadosTratados.label.push(resposta[i].dia);
+            dadosTratados.data.push(resposta[i].qtComentario);
+        }
+
+        return dadosTratados;
+    }
+
+    function obterDados() {
+        fetch(`/comentarios/por-dia`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    var dados = prepararDados(resposta);
+                    plotarGrafico(dados);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Funções Diagram de Venn
+
+    var dados = [
+        { sets: ["Romance"], size: 35 },
+        { sets: ["Ação"], size: 35 },
+        { sets: ["Terror"], size: 35 },
+        { sets: ["Fantasia"], size: 35 },
+        { sets: ["Romance", "Ação"], size: 10 },
+        { sets: ["Romance", "Terror"], size: 10 },
+        { sets: ["Terror", "Ação"], size: 10 },
+        { sets: ["Fantasia", "Ação"], size: 10 },
+        { sets: ["Terror", "Fantasia"], size: 10 },
+        { sets: ["Fantasia", "Romance"], size: 10 },
+        { sets: ["Romance", "Terror", "Ação", "Fantasia"], size: 10 }
+
+    ];
+
+    var chart = venn.VennDiagram();
+    d3.select("#diagramaDeVenn").datum(dados).call(chart);
+
+    d3.selectAll("g")
+        .on("mouseover", function () {
+            d3.select(this).select("path")
+                .style("fill-opacity", .5);
+        })
+        .on("mouseout", function () {
+            d3.select(this).select("path")
+                .style("fill-opacity", .25);
+        });
+</script>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <script src="./js/sessao.js"></script>
+
+  <title>Mar de Livros | Cadastro</title>
+
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="icon" href="./assets/icon/favicon2.ico" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+</head>
+
+<body id="bodyCadastro">
+  <div class="headerCadastro">
+    <a href="index.html" class="logo">
+      <img class="logo_headerBranco" src="./assets/imgs/mar-de-livros-logo-branca-sem-fundo.png">
+    </a>
+
+    <div class="botoesCadastro" class="inter">
+      <button class="buttonCadastro" onclick="categorias()">CATEGORIAS</button>
+      <button class="buttonCadastro" onclick="anne()">SESSÃO ANNE</button>
+      <button class="buttonCadastro" onclick="login()">LOGIN</button>
+
+    </div>
+  </div>
+  <div class="cadastro">
+    <h3>CADASTRO</h3>
+    <p class="inter" style="font-weight: bold;">Nome:</p>
+    <input id="nome_input" class="input_cadastro" placeholder="Lily Allen" type="text"> <br>
+
+    <p class="inter" style="font-weight: bold;">Email:</p>
+    <input id="email_input" class="input_cadastro" placeholder="westAndgirl@gmail.com" type="text"> <br>
+
+    <p class="inter" style="font-weight: bold;">CPF:</p>
+    <input id="cpf_input" class="input_cadastro" placeholder="XXXXXXXXXYY" type="text"> <br>
+
+    <p class="inter" style="font-weight: bold;">Senha:</p>
+    <input id="senha_input" class="input_cadastro" placeholder="********" type="password"> <br>
+
+    <p class="inter" style="font-weight: bold;">Confirmação da senha: </p>
+    <input id="confirmacao_senha_input" class="input_cadastro" placeholder="********" type="password"> <br>
+
+    <button class="buttonCadastrar" onclick="cadastrar()">CADASTRAR</button>
+    
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+
+  // Array para armazenar empresas cadastradas para validação de código de ativação 
+  let listaEmpresasCadastradas = [];
+
+  function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var cpfVar = cpf_input.value;
+
+    var cpfTamanho = cpfVar.length;
+    var senhaTamanho = senhaVar.length;
+
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      cpfVar == ""
+
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    if (
+      nomeVar.length < 1 ||
+      emailVar.includes('@') == false ||
+      confirmacaoSenhaVar != senhaVar ||
+      cpfTamanho.length < 11 ||
+      senhaTamanho < 6
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        `(Todos campos devem estar preenchidos corretamente.)`;
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        cpfServer: cpfVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+  function index() {
+    window.location.href = 'index.html'
+  }
+  function categorias() {
+
+  }
+
+  function sobreMim() {
+    window.location.href = 'index.html.#sobreMim';
+
+  }
+
+  function anne() {
+    window.location.href = 'sessaoAnne.html';
+
+  }
+
+  function login() {
+    window.location.href = 'login.html';
+  }
+
+  function cadastro() {
+    window.location.href = 'cadastro.html';
+  }
+</script>
