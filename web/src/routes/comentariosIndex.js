@@ -12,6 +12,4 @@ router.post("/cadastrarComentario", function (req, res) {
 })
 
 
-module.exports = 
-router,
-listarComentariosIndex;
+module.exports = router

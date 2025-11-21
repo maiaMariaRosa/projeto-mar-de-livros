@@ -1,10 +1,13 @@
+var comentariosIndexModel = require("../models/comentariosIndexModel");
+
 function cadastrarComentario(req, res) {
+    console.log(`BODY: ${req.body}`)
     var comentario = req.body.comentario;
 
     if (comentario == undefined) {
         res.status(400).send("Erro no comentario");
     } else {
-        avisoModel.cadastrarComentario(comentario)
+        comentariosIndexModel.cadastrarComentario(comentario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -20,7 +23,6 @@ function cadastrarComentario(req, res) {
     }
 }
 
-var comentariosIndexModel = require("../models/comentariosIndexModel");
 
 function listarComentariosIndex(req, res) {
     comentariosIndexModel.listarComentariosIndex().then(function (resultado) {

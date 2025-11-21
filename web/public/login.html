@@ -50,8 +50,8 @@
     function entrar() {
         aguardar();
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+        var emailVar = email_input.value.trim();
+        var senhaVar = senha_input.value.trim();
 
         if (emailVar == "" || senhaVar == "") {
             // cardErro.style.display = "block"

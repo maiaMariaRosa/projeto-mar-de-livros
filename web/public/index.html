@@ -82,11 +82,9 @@
 
     <!-- Aqui começa os comentarios-->
     <div class="comentariosPai">
-        <div class="comentarios">
-            <h4>Comentários</h1>
-                <div class="comentario1"> <b>user.name:</b> Que livro interessante!</div>
-                <div class="comentario2"> <b>user.name:</b> Que legal!</div>
-                <div class="comentario3" id="b_comentario"> <b>user.name:</b> Será que vende na Amazon?</div>
+        <div class="comentarios" id="div_comentario">
+            <h4>Comentários</h4>
+                 
                 <div class="fazerComentario">
                     <input id="form_postagem" placeholder="Deixe um comentário..." name="descricao" ></input>
                     <button class="button_comentar" onclick="comentar()">COMENTAR</button>
@@ -197,7 +195,6 @@
 </html>
 
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     b_comentario.innerHTML = sessionStorage.COMENTARIO;
 
     function categorias() {
@@ -228,28 +225,12 @@
         obterDados();
     }
 
-    function prepararDados(resposta) {
-        var dadosTratados = {
-            fkUfkUsuarioser: [],
-            comentario: []
-        }
-
-        for (var i = 0; i < resposta.length; i++) {
-            dadosTratados.nome.push(resposta[i].nome);
-            dadosTratados.comentario.push(resposta[i].comentario);
-        }
-
-        return dadosTratados;
-    }
-
     function obterDados() {
-        fetch(`/comentariosIndex/comentariosRota`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/comentariosIndex/listarComentariosIndex`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-                    var dados = prepararDados(resposta);
-                    plotarGrafico(dados);
+                    ultimoComentario(resposta);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -260,10 +241,20 @@
             });
     }
 
-    var postagem = form_postagem.value.trim();
+    function ultimoComentario(resposta) {
+        for ( var i = 0; i < resposta.length; i++){
+            div_comentario.innerHTML += `<div class="comentario"> ${resposta[i].comentario} </div>`
+        }
+    }
+
+
+
+    // insert do comentário no index
+
     
     function comentar() {
-        var idUsuario = sessionStorage.ID_USUARIO;
+        var postagem = form_postagem.value.trim();
+        // var idUsuario = sessionStorage.ID_USUARIO;
 
         
         var corpo = {

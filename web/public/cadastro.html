@@ -86,24 +86,19 @@
       cpfVar == ""
 
     ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
+        mensagem_erro.innerHTML =
         "(Mensagem de erro para todos os campos em branco)";
 
       finalizarAguardar();
       return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
-
-    if (
+    } else if (
       nomeVar.length < 1 ||
       emailVar.includes('@') == false ||
       confirmacaoSenhaVar != senhaVar ||
       cpfTamanho.length < 11 ||
       senhaTamanho < 6
     ) {
-      cardErro.style.display = "block";
+
       mensagem_erro.innerHTML =
         `(Todos campos devem estar preenchidos corretamente.)`;
 
@@ -132,8 +127,7 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
-
+          
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 

@@ -270,17 +270,8 @@ body {
 
 }
 
-.comentario1 {
-    width: 92%;
-    height: 50px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    color: #000000;
-    padding: 2%;
 
-}
-
-.comentario2 {
+.comentario {
     width: 92%;
     height: 50px;
     background-color: #ffffff;
@@ -288,20 +279,6 @@ body {
     color: #000000;
     margin-top: 2%;
     padding: 2%;
-
-
-}
-
-.comentario3 {
-    width: 92%;
-    height: 50px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    color: #000000;
-    margin-top: 2%;
-    padding: 2%;
-
-
 }
 
 .fazerComentario {
@@ -739,4 +716,8 @@ body {
 
 .titulo {
     font-weight: bold;
+}
+
+.banner-anne2 {
+    display: flex;
 }
