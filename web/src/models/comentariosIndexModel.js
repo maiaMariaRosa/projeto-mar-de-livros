@@ -5,7 +5,8 @@ function listarComentariosIndex() {
     var instrucaoSql = `
     select comentario 
 	    from comentarios
-		order by comentario;`
+		order by dataHora desc
+        limit 5;`
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

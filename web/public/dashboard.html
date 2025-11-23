@@ -6,11 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bibliotecas Diagrama de Venn -->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/venn.js@0.2.20/build/venn.min.js"></script>
-
-
     <title>Mar de Livros | Meu perfil</title>
 
     <script src="./js/sessao.js"></script>
@@ -19,7 +14,10 @@
 
 </head>
 
-<body class="inter" onload="obterDados()">
+<body class="inter" onload="obterDados()" style="padding: 2%;">
+    <main> 
+
+   
     <!-- Aqui começa o header -->
     <div class="header">
         <img class="logo_header" src="./assets/imgs/mar-de-livros-com-fundo.png" alt="">
@@ -40,27 +38,30 @@
         </div>
         <div class="descricao">
             <h2>Descrição</h2>
-            <div class="descricaoConteudo" id="id_descricaoConteudo" id="conteudo">
+            <div class="descricaoConteudo" id="id_descricaoConteudo">
                 <div class="inputDescricaoPai" id="inputDescricaoPai">
                     <div class="inputDescricao" id="livroPreferido">
-                        Livro preferido:
+                        <b>Livro preferido:</b>
                         <input class="input_descricao" type="text" id="input_livro">
                     </div>
                     <div class="input_descricao" id="generoPreferido">
-                        Gênero de leitura preferido:
+                        <b>Gênero de leitura preferido:</b>
                         <input class="input_descricao" type="text" id="input_genero">
                     </div>
                 </div>
 
-                Bios:
+                <b>Bios:</b>
                 <input style="display: block; width: 100%; height: 100px;" placeholder="Escreva um pouco sobre você..."
                     name="descricao" id="textarea_descricao"></input>
                 <button class="button_comentar" onclick="editar()">EDITAR</button>
-                <br>
+                <br>    
             </div>
-            <div class="input_descricao" id="div_LivroPreferido"></div>
-            <div class="input_descricao" id="div_generoLeitura"></div>
-            <div class="input_descricao" id="div_biosDescricao"></div>
+
+            <div class="respostasBios">
+                <div class="input_descricao" id="div_LivroPreferido"></div>
+                <div class="input_descricao" id="div_generoLeitura"></div>
+                <div class="input_descricao" id="div_biosDescricao"></div>
+            </div>
 
 
         </div>
@@ -104,24 +105,7 @@
         </div>
     </div>
 
-    <!-- Aqui começa o Diagrama de Venn-->
-
-    <div class="diagramaDeVennPai">
-        <div class="diagramaDeVennConteudo">
-            <p class="diagramaTitulo">Pesquisa: Gênero de livros preferidos</p>
-            <div class="conteudoDiagrama">
-                <div id="diagramaDeVenn"></div>
-                <div class="gostosDiagrama">
-                    <p id="gostos">Gostos</p>
-                    Livros de Romance:
-                    Livros de Terror:
-                    Livros de Fantasia:
-                    Livros de Ação:
-                </div>
-            </div>
-        </div>
-    </div>
-
+ </main>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -141,10 +125,7 @@
     };
 
     function editar() {
-        /*document.getElementById('conteudo').style.display = 'block';
-        document.getElementById('livroPreferido').style.display = 'block';
-        document.getElementById('generoPreferido').style.display = 'block';*/
-
+        
         var livro = input_livro.value.trim();
         var genero = input_genero.value.trim();
         var descricao = textarea_descricao.value.trim();
@@ -162,15 +143,11 @@
 
         for (var i = 0; i < listaBio.livro.length; i++) {
 
-            div_LivroPreferido.innerHTML = `Livro preferido: ${listaBio.livro[listaBio.livro.length - 1]}`;
-            div_generoLeitura.innerHTML = `Gênero de leitura preferido: ${listaBio.genero[listaBio.descricao.length - 1]}`;
-            div_biosDescricao.innerHTML = `Descrição: ${listaBio.descricao[listaBio.descricao.length - 1]}`;
+            div_LivroPreferido.innerHTML = `<b> Livro preferido: </b> ${listaBio.livro[listaBio.livro.length - 1]}`;
+            div_generoLeitura.innerHTML = `<b> Gênero de leitura preferido: </b> ${listaBio.genero[listaBio.descricao.length - 1]}`;
+            div_biosDescricao.innerHTML = `<b> Descrição: </b> ${listaBio.descricao[listaBio.descricao.length - 1]}`;
 
         }
-
-        /*document.getElementById('conteudo').style.display = 'none';
-        document.getElementById('livroPreferido').style.display = 'none';
-        document.getElementById('generoPreferido').style.display = 'none';*/
 
     }
 
@@ -246,33 +223,4 @@
             });
     }
 
-    // Funções Diagram de Venn
-
-    var dados = [
-        { sets: ["Romance"], size: 35 },
-        { sets: ["Ação"], size: 35 },
-        { sets: ["Terror"], size: 35 },
-        { sets: ["Fantasia"], size: 35 },
-        { sets: ["Romance", "Ação"], size: 10 },
-        { sets: ["Romance", "Terror"], size: 10 },
-        { sets: ["Terror", "Ação"], size: 10 },
-        { sets: ["Fantasia", "Ação"], size: 10 },
-        { sets: ["Terror", "Fantasia"], size: 10 },
-        { sets: ["Fantasia", "Romance"], size: 10 },
-        { sets: ["Romance", "Terror", "Ação", "Fantasia"], size: 10 }
-
-    ];
-
-    var chart = venn.VennDiagram();
-    d3.select("#diagramaDeVenn").datum(dados).call(chart);
-
-    d3.selectAll("g")
-        .on("mouseover", function () {
-            d3.select(this).select("path")
-                .style("fill-opacity", .5);
-        })
-        .on("mouseout", function () {
-            d3.select(this).select("path")
-                .style("fill-opacity", .25);
-        });
 </script>

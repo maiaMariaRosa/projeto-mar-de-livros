@@ -84,11 +84,11 @@
     <div class="comentariosPai">
         <div class="comentarios" id="div_comentario">
             <h4>Comentários</h4>
-                 
-                <div class="fazerComentario">
-                    <input id="form_postagem" placeholder="Deixe um comentário..." name="descricao" ></input>
-                    <button class="button_comentar" onclick="comentar()">COMENTAR</button>
-                </div>
+
+            <div class="fazerComentario">
+                <input id="form_postagem" placeholder="Deixe um comentário..." name="descricao"></input>
+                <button class="button_comentar" onclick="comentar()">COMENTAR</button>
+            </div>
         </div>
     </div>
 
@@ -132,27 +132,33 @@
             <p class="tituloQuestionario">
                 Qual seu gênero de livro preferido?
             </p>
-            <div id="opcoes" class="opcoes">
+            <div id="opcoes" class="opcoes"> <!--Romance / Terror / Fantasia / Ação -->
                 <span>
-                    <input type="checkbox" value="primeiraOpcao" id="primeiraOpcao" name="option"
-                        value="alternativaA" />
-                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm">Romance</label>
+                    <input type="checkbox" value="romance" id="check_primeiraOpcao" name="generoLivro"/>
+                    <label for="check_primeiraOpcao" class="option" id="labelOpcaoUm">Romance</label>
                 </span>
                 <span>
-                    <input type="checkbox" value="segundaOpcao" id="segundaOpcao" name="option" value="alternativaB" />
-                    <label for="segundaOpcao" class="option" id="labelOpcaoDois">Terror</label>
+                    <input type="checkbox" value="terror" id="check_segundaOpcao" name="generoLivro"/>
+                    <label for="check_segundaOpcao" class="option" id="labelOpcaoDois">Terror</label>
                 </span>
                 <span>
-                    <input type="checkbox" value="terceiraOpcao" id="terceiraOpcao" name="option"
-                        value="alternativaC" />
-                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres">Fantasia</label>
+                    <input type="checkbox" value="fantasia" id="check_terceiraOpcao" name="generoLivro"/>
+                    <label for="check_terceiraOpcao" class="option" id="labelOpcaoTres">Fantasia</label>
                 </span>
                 <span>
-                    <input type="checkbox" value="quartaOpcao" id="quartaOpcao" name="option" value="alternativaD" />
-                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro">Ação</label>
+                    <input type="checkbox" value="acao" id="check_quartaOpcao" name="generoLivro"/>
+                    <label for="check_quartaOpcao" class="option" id="labelOpcaoQuatro">Ação</label>
+                </span>
+                <span>
+                    <input type="checkbox" value="ficcao_cientifica" id="check_quintaOpcao" name="generoLivro"/>
+                    <label for="check_quintaOpcao" class="option" id="labelOpcaoQuatro">Ficcção Científica</label>
                 </span>
             </div>
             <button class="button_comentar" id="button_votar" onclick="votar()">VOTAR</button>
+
+            <button class="button_comentar" id="button_resultado" onclick="verResultado()"><B>VER RESULTADO</B></button>
+
+            <div id="respostaQuestionario"></div>
         </div>
     </div>
 
@@ -195,7 +201,6 @@
 </html>
 
 <script>
-    b_comentario.innerHTML = sessionStorage.COMENTARIO;
 
     function categorias() {
 
@@ -242,7 +247,7 @@
     }
 
     function ultimoComentario(resposta) {
-        for ( var i = 0; i < resposta.length; i++){
+        for (var i = 0; i < resposta.length; i++) {
             div_comentario.innerHTML += `<div class="comentario"> ${resposta[i].comentario} </div>`
         }
     }
@@ -251,12 +256,12 @@
 
     // insert do comentário no index
 
-    
+
     function comentar() {
         var postagem = form_postagem.value.trim();
         // var idUsuario = sessionStorage.ID_USUARIO;
 
-        
+
         var corpo = {
             comentario: postagem
         }
@@ -289,12 +294,83 @@
 
     }
 
+
     // Funções questionário
-    var listaDeOpcoes = {
-        Romance: [],
-        Terror: [],
-        Fantasia: [],
-        Ação: []
+    var listaEscolhasDoUser = [];
+    var listaTemporaria = [];
+
+    var contVotar = 0;
+
+    function votar() {
+        var valoresCheckBox = document.getElementsByName('generoLivro');
+
+        for (var i = 0; i < valoresCheckBox.length; i++) {
+            if (valoresCheckBox[i].checked) {
+                listaEscolhasDoUser.push(valoresCheckBox[i].value)
+            }
+        }
+        
+        console.log(listaEscolhasDoUser);
+
+        for ( var j = 0; j < listaEscolhasDoUser.length; j++){
+            var contatoAtual = listaEscolhasDoUser[j];
+            var indiceContatoAtual = listaEscolhasDoUser[j].indexOf();
+
+            if (j != indiceContatoAtual){
+                listaTemporaria.push(contatoAtual)
+            }
+
+            listaEscolhasDoUser = listaTemporaria;
+        }
+
+        contVotar++
+
+    }
+
+    function verResultado() {
+
+        var escolhaRomance = 'livros de romance';
+        var escolhaTerror = 'livros de terror';
+        var escolhaFantasia = 'livros de fantasia';
+        var escolhaAcao = 'livros de ação';
+        var escolhaFiccao = 'livros de ficção cientifica';
+        var mensagem = '';
+
+        respostaQuestionario.innerHTML = `Você gosta de `;
+
+        for (var i = 0; i < listaEscolhasDoUser.length; i++) {
+
+            // Opções: Romance / Terror / Fantasia / Ação / Ficção Científica
+            if (listaEscolhasDoUser.includes('romance') ) {
+                mensagem += `${escolhaRomance},`
+
+
+            } else if (listaEscolhasDoUser.indexOf('romance') != -1){
+                console.log('Romance já foi escolhido antes')
+            }
+
+            if (listaEscolhasDoUser.includes('terror')) {
+                mensagem += `${escolhaTerror},`
+
+            } 
+            if (listaEscolhasDoUser.includes('fantasia')) {
+                mensagem += `${escolhaFantasia},`
+
+            } 
+            if (listaEscolhasDoUser.includes('acao')) {
+                mensagem += `${escolhaAcao},`
+
+            } 
+            if (listaEscolhasDoUser.includes('ficcao_cientifica')) {
+                mensagem += `${escolhaFiccao},`
+
+            }
+        }
+
+        respostaQuestionario.innerHTML += `${mensagem}!`;
+
+        respostaQuestionario.innerHTML += `<br> <br>Você votou ${contVotar} vezes`;
+
     }
 
 </script>
