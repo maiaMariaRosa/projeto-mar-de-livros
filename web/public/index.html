@@ -248,7 +248,7 @@
 
     function ultimoComentario(resposta) {
         for (var i = 0; i < resposta.length; i++) {
-            div_comentario.innerHTML += `<div class="comentario"> ${resposta[i].comentario} </div>`
+            div_comentario.innerHTML += `<div class="comentario">${resposta[i].comentario} </div>`
         }
     }
 
@@ -263,7 +263,8 @@
 
 
         var corpo = {
-            comentario: postagem
+            comentario: postagem,
+            idUsuario: sessionStorage.ID_USUARIO
         }
 
         fetch(`/comentariosIndex/cadastrarComentario`, {

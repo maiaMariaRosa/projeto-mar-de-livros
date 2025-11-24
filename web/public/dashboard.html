@@ -14,98 +14,99 @@
 
 </head>
 
-<body class="inter" onload="obterDados()" style="padding: 2%;">
-    <main> 
+<body class="inter" style="padding: 2%;">
+    <main>
 
-   
-    <!-- Aqui começa o header -->
-    <div class="header">
-        <img class="logo_header" src="./assets/imgs/mar-de-livros-com-fundo.png" alt="">
-        <div class="botoes">
-            <button class="button" onclick="categorias()">CATEGORIAS</button>
-            <button class="button" onclick="anne()">SESSÃO ANNE</button>
-            <button class="button" onclick="index()">HOME</button>
 
+        <!-- Aqui começa o header -->
+        <div class="header">
+            <img class="logo_header" src="./assets/imgs/mar-de-livros-com-fundo.png" alt="">
+            <div class="botoes">
+                <button class="button" onclick="categorias()">CATEGORIAS</button>
+                <button class="button" onclick="anne()">SESSÃO ANNE</button>
+                <button class="button" onclick="index()">HOME</button>
+
+            </div>
         </div>
-    </div>
-    <!-- Aqui acaba o header -->
+        <!-- Aqui acaba o header -->
 
-    <!-- Aqui começa a edição do perfil -->
-    <div class="edicaoPerfil">
-        <div class="container3">
-            <img class="img_sobreMim" src="./assets/imgs/minha-foto-perfil - Editado.jpg" alt="">
-            <p id="b_usuario"><b><i>Maria Rosa </i></b></p>
-        </div>
-        <div class="descricao">
-            <h2>Descrição</h2>
-            <div class="descricaoConteudo" id="id_descricaoConteudo">
-                <div class="inputDescricaoPai" id="inputDescricaoPai">
-                    <div class="inputDescricao" id="livroPreferido">
-                        <b>Livro preferido:</b>
-                        <input class="input_descricao" type="text" id="input_livro">
+        <!-- Aqui começa a edição do perfil -->
+        <div class="edicaoPerfil">
+            <div class="container3">
+                <img class="img_sobreMim" src="./assets/imgs/minha-foto-perfil - Editado.jpg" alt="">
+                <p id="b_usuario"><b><i>Maria Rosa </i></b></p>
+            </div>
+            <div class="descricao">
+                <h2>Descrição</h2>
+                <div class="descricaoConteudo" id="id_descricaoConteudo">
+                    <div class="inputDescricaoPai" id="inputDescricaoPai">
+                        <div class="inputDescricao" id="livroPreferido">
+                            <b>Livro preferido:</b>
+                            <input class="input_descricao" type="text" id="input_livro">
+                        </div>
+                        <div class="input_descricao" id="generoPreferido">
+                            <b>Gênero de leitura preferido:</b>
+                            <input class="input_descricao" type="text" id="input_genero">
+                        </div>
                     </div>
-                    <div class="input_descricao" id="generoPreferido">
-                        <b>Gênero de leitura preferido:</b>
-                        <input class="input_descricao" type="text" id="input_genero">
+
+                    <b>Bios:</b>
+                    <input style="display: block; width: 100%; height: 100px;"
+                        placeholder="Escreva um pouco sobre você..." name="descricao" id="textarea_descricao"></input>
+                    <button class="button_comentar" onclick="editar()">EDITAR</button>
+                    <br>
+                </div>
+
+                <div class="respostasBios">
+                    <div class="input_descricao" id="div_LivroPreferido"></div>
+                    <div class="input_descricao" id="div_generoLeitura"></div>
+                    <div class="input_descricao" id="div_biosDescricao"></div>
+                </div>
+
+
+            </div>
+        </div>
+        </div>
+        <div id="div_mensagem"></div>
+
+        <!-- Aqui termina a descricao-->
+
+        <!-- Aqui começa o gráfico-->
+        <div class="graficoPai">
+            <div class="grafico">
+                <div>
+                    <canvas class="myChart" id="myChart"></canvas>
+                </div>
+            </div>
+
+            <!-- KPI's -->
+
+            <div class="kpis">
+                <div class="labels">
+                    <div class="labelPai">
+                        <div class="label1"></div>Acima do Esperado
+                    </div>
+                    <div class="labelPai">
+                        <div class="label2"></div>Dentro do Esperado
+                    </div>
+                    <div class="labelPai">
+                        <div class="label3"></div>Abaixo do Esperado
                     </div>
                 </div>
 
-                <b>Bios:</b>
-                <input style="display: block; width: 100%; height: 100px;" placeholder="Escreva um pouco sobre você..."
-                    name="descricao" id="textarea_descricao"></input>
-                <button class="button_comentar" onclick="editar()">EDITAR</button>
-                <br>    
-            </div>
+                <div id="kpiContagem">
+                    <!-- <div class="kpi_corVermelha" id="kpi2">
+                        <h1 id="h1_kpi2"></h1>
+                        <div>Quantidade de comentários por dia</div>
+                    </div> -->
+                </div>
 
-            <div class="respostasBios">
-                <div class="input_descricao" id="div_LivroPreferido"></div>
-                <div class="input_descricao" id="div_generoLeitura"></div>
-                <div class="input_descricao" id="div_biosDescricao"></div>
-            </div>
-
-
-        </div>
-    </div>
-    </div>
-    <div id="div_mensagem"></div>
-
-    <!-- Aqui termina a descricao-->
-
-    <!-- Aqui começa o gráfico-->
-    <div class="graficoPai">
-        <div class="grafico">
-            <div>
-                <canvas class="myChart" id="myChart"></canvas>
+                <div id="kpiMedia">
+                </div>
             </div>
         </div>
 
-        <!-- KPI's -->
-
-        <div class="kpis">
-            <div class="labels">
-                <div class="labelPai">
-                    <div class="label1"></div>Acima do Esperado
-                </div>
-                <div class="labelPai">
-                    <div class="label2"></div>Dentro do Esperado
-                </div>
-                <div class="labelPai">
-                    <div class="label3"></div>Abaixo do Esperado
-                </div>
-            </div>
-
-            <div class="kpi1" id="kpi1">
-                <h1>20</h1>
-                <div>Média de comentários por dia</div>
-            </div>
-            <div class="kpi2" id="kpi2">
-                <h1>10</h1>
-                <div>Média de cadastros no site por mês</div>
-            </div>
-        </div>
-    </div>
-
- </main>
+    </main>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -113,7 +114,10 @@
 <script>
 
     window.onload = function () {
-        obterDados();
+        obterDados(),
+            receberContagem(),
+            receberMediaComentarios();
+
     }
 
     // Função para Bios
@@ -125,7 +129,7 @@
     };
 
     function editar() {
-        
+
         var livro = input_livro.value.trim();
         var genero = input_genero.value.trim();
         var descricao = textarea_descricao.value.trim();
@@ -222,5 +226,84 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
+
+    // Funções para KPIs
+    function receberContagem() {
+        fetch(`/comentarios/countComentarios`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    countComentarios(resposta[0].qtdComentarios)
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function countComentarios(dadosContagem) {
+        console.log(dadosContagem);
+        if (dadosContagem < 5) {
+            kpiContagem.innerHTML = `<div class="kpi_corVermelha" id="kpi2">
+                                         <h1 id="h1_kpi2">${dadosContagem}</h1>
+                                         <div>Quantidade de comentários por dia</div>
+                                    </div>`
+        } else if (dadosContagem < 10) {
+            kpiContagem.innerHTML = `<div class="kpi_corAmarela" id="kpi2">
+                                        <h1 id="h1_kpi2">${dadosContagem}</h1>
+                                        <div>Quantidade de comentários por dia</div>
+                                    </div>`
+        } else if (dadosContagem > 10) {
+            kpiContagem.innerHTML = `<div class="kpi_corVerde" id="kpi2">
+                                        <h1 id="h1_kpi2">${dadosContagem}</h1>
+                                        <div>Quantidade de comentários por dia</div>
+                                    </div>`
+        }
+
+    }
+
+    function receberMediaComentarios() {
+        fetch(`/comentarios/mediaComentarios`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    mediaComentarios(resposta[0].mediaDeComentarios)
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function mediaComentarios(dadosMediaComentarios) {
+        if (dadosMediaComentarios < 5) {
+                    kpiMedia.innerHTML = `<div class="kpi_corVermelha" id = "kpi2" >
+                                                <h1 id="h1_kpi2">${dadosMediaComentarios}</h1>
+                                                <div>Quantidade de comentários por dia</div>
+                                            </div > `
+        } else if ( dadosMediaComentarios < 10) {
+                    kpiMedia.innerHTML = `<div class="kpi_corAmarela" id = "kpi2" >
+                                                <h1 id="h1_kpi2">${dadosMediaComentarios}</h1>
+                                                <div>Quantidade de comentários por dia</div>
+                                            </div > `
+        } else if ( dadosMediaComentarios > 10) {
+                    kpiMedia.innerHTML = `<div class="kpi_corVerde" id = "kpi2" >
+                                                <h1 id="h1_kpi2">${dadosMediaComentarios}</h1>
+                                                <div>Quantidade de comentários por dia</div>
+                                            </div > `
+        }
+
+    }
+
 
 </script>

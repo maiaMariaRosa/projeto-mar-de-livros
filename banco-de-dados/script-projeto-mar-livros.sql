@@ -92,6 +92,11 @@ select idComentario, comentario from comentarios;
 
 create view comentarioChatView as select idComentario, comentario from comentarios;
 
+  select comentario 
+	    from comentarios
+		order by dataHora desc
+        limit 5;
+
 -- Selects para comentários na dashboard
 
 select 
@@ -110,3 +115,16 @@ create view comentarioDashboard as select
     order by dia asc limit 7;
     
 select * from comentarioDashboard;
+
+-- Selects para KPI's
+
+select count(idComentario) as qtdComentarios from comentarios
+	where date(dataHora) = current_date();
+
+select round(avg(qtdPorDia),2) from 
+	(select count(*) as 'qtdPorDia', 
+		date(dataHora) as 'dia'
+        from comentarios
+		group by date(dataHora)) 
+			as mediaDeComentarios;
+		
