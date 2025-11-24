@@ -134,24 +134,24 @@
             </p>
             <div id="opcoes" class="opcoes"> <!--Romance / Terror / Fantasia / Ação -->
                 <span>
-                    <input type="checkbox" value="romance" id="check_primeiraOpcao" name="generoLivro"/>
+                    <input type="checkbox" value="romance" id="check_primeiraOpcao" name="generoLivro" />
                     <label for="check_primeiraOpcao" class="option" id="labelOpcaoUm">Romance</label>
                 </span>
                 <span>
-                    <input type="checkbox" value="terror" id="check_segundaOpcao" name="generoLivro"/>
+                    <input type="checkbox" value="terror" id="check_segundaOpcao" name="generoLivro" />
                     <label for="check_segundaOpcao" class="option" id="labelOpcaoDois">Terror</label>
                 </span>
                 <span>
-                    <input type="checkbox" value="fantasia" id="check_terceiraOpcao" name="generoLivro"/>
+                    <input type="checkbox" value="fantasia" id="check_terceiraOpcao" name="generoLivro" />
                     <label for="check_terceiraOpcao" class="option" id="labelOpcaoTres">Fantasia</label>
                 </span>
                 <span>
-                    <input type="checkbox" value="acao" id="check_quartaOpcao" name="generoLivro"/>
+                    <input type="checkbox" value="acao" id="check_quartaOpcao" name="generoLivro" />
                     <label for="check_quartaOpcao" class="option" id="labelOpcaoQuatro">Ação</label>
                 </span>
                 <span>
-                    <input type="checkbox" value="ficcao_cientifica" id="check_quintaOpcao" name="generoLivro"/>
-                    <label for="check_quintaOpcao" class="option" id="labelOpcaoQuatro">Ficcção Científica</label>
+                    <input type="checkbox" value="ficcao_cientifica" id="check_quintaOpcao" name="generoLivro" />
+                    <label for="check_quintaOpcao" class="option" id="labelOpcaoQuinta">Ficcção Científica</label>
                 </span>
             </div>
             <button class="button_comentar" id="button_votar" onclick="votar()">VOTAR</button>
@@ -252,11 +252,7 @@
         }
     }
 
-
-
     // insert do comentário no index
-
-
     function comentar() {
         var postagem = form_postagem.value.trim();
         // var idUsuario = sessionStorage.ID_USUARIO;
@@ -297,80 +293,159 @@
 
 
     // Funções questionário
-    var listaEscolhasDoUser = [];
-    var listaTemporaria = [];
+    var listaEscolha = [];
 
-    var contVotar = 0;
+    var contTentativas = 0;
+    var mediaDeTentativas = 0;
+
+    var livroEscolhidoRecomencao = '';
 
     function votar() {
         var valoresCheckBox = document.getElementsByName('generoLivro');
 
         for (var i = 0; i < valoresCheckBox.length; i++) {
             if (valoresCheckBox[i].checked) {
-                listaEscolhasDoUser.push(valoresCheckBox[i].value)
+                listaEscolha.push(valoresCheckBox[i].value);
+
             }
         }
-        
-        console.log(listaEscolhasDoUser);
 
-        for ( var j = 0; j < listaEscolhasDoUser.length; j++){
-            var contatoAtual = listaEscolhasDoUser[j];
-            var indiceContatoAtual = listaEscolhasDoUser[j].indexOf();
+        console.log(listaEscolha);
 
-            if (j != indiceContatoAtual){
-                listaTemporaria.push(contatoAtual)
-            }
+        contTentativas++
 
-            listaEscolhasDoUser = listaTemporaria;
-        }
-
-        contVotar++
-
+        livroEscolhidoRecomencao = '';
     }
+
+    // Lista de recomendações
+    var livrosRomance = ['Senhora, de José de Alencar', 'O cortiço, de Aluísio de Azevedo', 'A boa terra, de Pearls S. Buck', 'Anne de Green Gables, de Lucy Maud Montgomery'];
+
+    var livrosTerror = ['Christine, de Stephen King', 'Joyland, de Stephen King', 'Dŕacula, de Bram Stoker', 'O orfanato da Srta Peregrine para crianças peculiares, de Ransom Riggs', 'Histórias de Mistério, de Lygia Fagundes Telles', 'A menina do fim da rua, de Laird Koenig'];
+
+    var livrosFantasia = ['Magisterium, desafio de ferro, Cassandra Clare e Holly Black', 'Maze Runner, correr ou morrer, de James Dashner', 'A Bússola de Ouro, de Philip Pullman', 'A faca sutil, de Philip Pullman', 'A luneta âmbar, de Philip Pullman', 'Memórias de um Sobrevivente, de Doris Lessing'];
+
+    var livrosAcao = ['Quebrando a banca, Ben Mezrich', 'Depois da escuridão, de Sidney Sheldon', 'Vinte mil léguas submarinas, de Júlio Verne', '1984, de George Orwell'];
+
+    var livrosFiccao = ['O guia do mochileiro das galáxias, Doouglas Adams', 'Diário de bordo do astronauta Roger, de Roger Jones', 'A faca sutil, de Philip Pullman'];
+
+    // Tamanhos das listas de recomendações
+
+    var tamanhoLivrosRomance = livrosRomance.length;
+    var tamanhoLivrosTerror = livrosTerror.length;
+    var tamanhoLivrosFantasia = livrosFantasia.length;
+    var tamanhoLivrosAcao = livrosAcao.length;
+    var tamanhoLivrosFiccao = livrosFiccao.length;
+
+    // Cálculo para média de tentativas
+    mediaDeTentativas = contTentativas / listaEscolha.length;
 
     function verResultado() {
 
-        var escolhaRomance = 'livros de romance';
-        var escolhaTerror = 'livros de terror';
-        var escolhaFantasia = 'livros de fantasia';
-        var escolhaAcao = 'livros de ação';
-        var escolhaFiccao = 'livros de ficção cientifica';
+        var escolhaRomance = ' livros de romance';
+        var escolhaTerror = ' livros de terror';
+        var escolhaFantasia = ' livros de fantasia';
+        var escolhaAcao = ' livros de ação';
+        var escolhaFiccao = ' livros de ficção cientifica';
         var mensagem = '';
 
         respostaQuestionario.innerHTML = `Você gosta de `;
 
-        for (var i = 0; i < listaEscolhasDoUser.length; i++) {
+        var tamanhoLista = listaEscolha.length;
 
-            // Opções: Romance / Terror / Fantasia / Ação / Ficção Científica
-            if (listaEscolhasDoUser.includes('romance') ) {
-                mensagem += `${escolhaRomance},`
+        var qtVezesApareceR = 0;
+        var qtVezesApareceT = 0;
+        var qtVezesApareceF = 0;
+        var qtVezesApareceA = 0;
+        var qtVezesApareceFC = 0;
 
-
-            } else if (listaEscolhasDoUser.indexOf('romance') != -1){
-                console.log('Romance já foi escolhido antes')
+        for (var k = 0; k < tamanhoLista; k++) {
+            if (listaEscolha.includes('romance')) {
+                qtVezesApareceR += 1;
             }
 
-            if (listaEscolhasDoUser.includes('terror')) {
+            if (listaEscolha.includes('terror')) {
+                qtVezesApareceT += 1;
+            }
+
+            if (listaEscolha.includes('fantasia')) {
+                qtVezesApareceF += 1;
+            }
+
+            if (listaEscolha.includes('acao')) {
+                qtVezesApareceA += 1;
+            }
+
+            if (listaEscolha.includes('ficcao_cientifica')) {
+                qtVezesApareceFC += 1;
+            }
+        }
+
+
+
+        for (var i = 0; i < tamanhoLista; i++) {
+
+            // var ultimoValorLista = listaEscolhasDoUser[1].length-1
+
+            // Opções: Romance / Terror / Fantasia / Ação / Ficção Científica
+
+            if (listaEscolha.includes('romance')) {
+                mensagem += `${escolhaRomance},`
+
+                // Recomenção de um livro
+                var numAleatorio0 = Math.floor(Math.random() * tamanhoLivrosRomance);
+                livroEscolhidoRecomencao += `<br> - ${livrosRomance[numAleatorio0]} <i>Romance</i> <br>  <br>`;
+
+                tamanhoLista -= qtVezesApareceR;
+            }
+
+            if (listaEscolha.includes('terror')) {
                 mensagem += `${escolhaTerror},`
 
-            } 
-            if (listaEscolhasDoUser.includes('fantasia')) {
+                // Recomenção de um livro
+                var numAleatorio1 = Math.floor(Math.random() * tamanhoLivrosTerror);
+                livroEscolhidoRecomencao += `<br> - ${livrosTerror[numAleatorio1]} <i>Terror</i> <br>  <br>`;
+
+                tamanhoLista -= qtVezesApareceT;
+            }
+
+            if (listaEscolha.includes('fantasia')) {
                 mensagem += `${escolhaFantasia},`
 
-            } 
-            if (listaEscolhasDoUser.includes('acao')) {
+                // Recomenção de um livro
+                var numAleatorio2 = Math.floor(Math.random() * tamanhoLivrosFantasia);
+                livroEscolhidoRecomencao += `<br> - ${livrosFantasia[numAleatorio2]} <i>Fantasia</i> <br>  <br>`;
+
+                tamanhoLista -= qtVezesApareceF;
+            }
+
+            if (listaEscolha.includes('acao')) {
                 mensagem += `${escolhaAcao},`
 
-            } 
-            if (listaEscolhasDoUser.includes('ficcao_cientifica')) {
+                // Recomenção de um livro
+                var numAleatorio3 = Math.floor(Math.random() * tamanhoLivrosAcao);
+                livroEscolhidoRecomencao += `<br> - ${livrosAcao[numAleatorio3]} <i>Ação</i> <br>  <br>`;
+
+                tamanhoLista -= qtVezesApareceA;
+            }
+
+            if (listaEscolha.includes('ficcao_cientifica')) {
                 mensagem += `${escolhaFiccao},`
 
+                // Recomenção de um livro
+                var numAleatorio4 = Math.floor(Math.random() * tamanhoLivrosFiccao);
+                livroEscolhidoRecomencao += `<br> - ${livrosFiccao[numAleatorio4]} <i>Ficção científica</i> <br>  <br>`;
+
+                tamanhoLista -= qtVezesApareceFC;
             }
         }
 
         respostaQuestionario.innerHTML += `${mensagem}!`;
 
-        respostaQuestionario.innerHTML += `<br> <br>Você votou ${contVotar} vezes`;
+        respostaQuestionario.innerHTML += `<br> <br>Você votou ${contTentativas} vezes <br> <br>
+                                            A sua média de tentativas é ${mediaDeTentativas } <br> <br>
+                                           <b> Recomendações de livros:</b> ${livroEscolhidoRecomencao}`;
+
+        listaEscolha = [];
 
     }
 

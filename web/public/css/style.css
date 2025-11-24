@@ -609,7 +609,7 @@ body {
 
 .questionarioConteudo {
     display: flex;
-    width: 25%;
+    width: 30%;
     height: 100%;
     background-color: #ECEADE;
     border-radius: 10px;
@@ -640,9 +640,18 @@ body {
 
 #button_resultado {
     width: 40%;
-    font-size: 16px;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    font-size: 20px;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    background-color: #EEB975;
+}
+
+.respostaQuestionario {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    gap: 4%;
+    font-size: 20px;
 }
 
 /* Diagrama de Venn */
