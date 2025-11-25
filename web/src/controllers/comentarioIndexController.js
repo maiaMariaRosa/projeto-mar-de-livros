@@ -4,28 +4,10 @@ function cadastrarComentario(req, res) {
     var comentario = req.body.comentario;
     var idUsuario = req.body.idUsuario;
 
-    if (comentario == undefined) {
+    if (comentario == undefined || idUsuario == undefined) {
         res.status(400).send("Erro no comentario");
     } else {
-        comentariosIndexModel.cadastrarComentario(comentario)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            )
-            .catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-
-    if (idUsuario == undefined) {
-        res.status(400).send("Erro no idUsuario");
-    } else {
-        comentariosIndexModel.cadastrarComentario(idUsuario)
+        comentariosIndexModel.cadastrarComentario(comentario,idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);

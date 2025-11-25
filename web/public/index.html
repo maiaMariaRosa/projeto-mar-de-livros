@@ -19,13 +19,30 @@
     <div class="header">
         <img class="logo_header" src="./assets/imgs/mar-de-livros-com-fundo.png" alt="">
         <div class="botoes">
-            <button class="button" onclick="categorias()">CATEGORIAS</button>
+            <div>
+                <button class="button" onclick="categorias()">CATEGORIAS</button>
+                <div id="div_categorias" class="categorias" style="display: none;">
+                    <span class="botoesCategoria">
+                        <button class="buttonCategoria">Romance</button>
+                        <button class="buttonCategoria">Literatura Brasileira</button>
+                        <button class="buttonCategoria">Literatura Inlgesa</button>
+                        <button class="buttonCategoria">Terror/Suspense</button>
+                        <button class="buttonCategoria">Aventura/Ação</button>
+                        <button class="buttonCategoria">Infantil</button>
+                        <button class="buttonCategoria">Drama</button>
+                        <button class="buttonCategoria">História</button>
+                        <button class="buttonCategoria">Ficção Científica</button>
+                        <button class="buttonCategoria">Fantasia</button>
+                    </span>
+                </div>
+            </div>
             <button class="button" onclick="sobreMim()">SOBRE MIM</button>
             <button class="button" onclick="anne()">SESSÃO ANNE</button>
             <button class="button" onclick="login()">LOGIN</button>
             <button class="button" onclick="cadastro()">CADASTRE-SE</button>
 
         </div>
+
     </div>
     <!-- Aqui acaba o header -->
 
@@ -202,7 +219,20 @@
 
 <script>
 
+    var div_block = false;
+    
     function categorias() {
+
+        if (div_block == true) {
+            document.getElementById('div_categorias').style.display = "none";
+
+            div_block = false;
+
+        } else {
+            document.getElementById('div_categorias').style.display = "block";
+
+            div_block = true;
+        }
 
     }
 
@@ -248,14 +278,13 @@
 
     function ultimoComentario(resposta) {
         for (var i = 0; i < resposta.length; i++) {
-            div_comentario.innerHTML += `<div class="comentario">${resposta[i].comentario} </div>`
+            div_comentario.innerHTML += `<div class="comentario">${resposta[i].NomeUser}: ${resposta[i].Comentario} </div>`
         }
     }
 
     // insert do comentário no index
     function comentar() {
-        var postagem = form_postagem.value.trim();
-        // var idUsuario = sessionStorage.ID_USUARIO;
+        var postagem = form_postagem.value.trim(); // var idUsuario = sessionStorage.ID_USUARIO;
 
 
         var corpo = {
@@ -393,7 +422,7 @@
 
                 // Recomenção de um livro
                 var numAleatorio0 = Math.floor(Math.random() * tamanhoLivrosRomance);
-                livroEscolhidoRecomencao += `<br> - ${livrosRomance[numAleatorio0]} <i>Romance</i> <br>  <br>`;
+                livroEscolhidoRecomencao += `<br> - ${livrosRomance[numAleatorio0]} - <i>Romance</i> <br>  <br>`;
 
                 tamanhoLista -= qtVezesApareceR;
             }
@@ -403,7 +432,7 @@
 
                 // Recomenção de um livro
                 var numAleatorio1 = Math.floor(Math.random() * tamanhoLivrosTerror);
-                livroEscolhidoRecomencao += `<br> - ${livrosTerror[numAleatorio1]} <i>Terror</i> <br>  <br>`;
+                livroEscolhidoRecomencao += `<br> - ${livrosTerror[numAleatorio1]} - <i>Terror</i> <br>  <br>`;
 
                 tamanhoLista -= qtVezesApareceT;
             }
@@ -413,7 +442,7 @@
 
                 // Recomenção de um livro
                 var numAleatorio2 = Math.floor(Math.random() * tamanhoLivrosFantasia);
-                livroEscolhidoRecomencao += `<br> - ${livrosFantasia[numAleatorio2]} <i>Fantasia</i> <br>  <br>`;
+                livroEscolhidoRecomencao += `<br> - ${livrosFantasia[numAleatorio2]} - <i>Fantasia</i> <br>  <br>`;
 
                 tamanhoLista -= qtVezesApareceF;
             }
@@ -423,7 +452,7 @@
 
                 // Recomenção de um livro
                 var numAleatorio3 = Math.floor(Math.random() * tamanhoLivrosAcao);
-                livroEscolhidoRecomencao += `<br> - ${livrosAcao[numAleatorio3]} <i>Ação</i> <br>  <br>`;
+                livroEscolhidoRecomencao += `<br> - ${livrosAcao[numAleatorio3]} - <i>Ação</i> <br>  <br>`;
 
                 tamanhoLista -= qtVezesApareceA;
             }
@@ -433,7 +462,7 @@
 
                 // Recomenção de um livro
                 var numAleatorio4 = Math.floor(Math.random() * tamanhoLivrosFiccao);
-                livroEscolhidoRecomencao += `<br> - ${livrosFiccao[numAleatorio4]} <i>Ficção científica</i> <br>  <br>`;
+                livroEscolhidoRecomencao += `<br> - ${livrosFiccao[numAleatorio4]} - <i>Ficção científica</i> <br>  <br>`;
 
                 tamanhoLista -= qtVezesApareceFC;
             }
@@ -442,7 +471,7 @@
         respostaQuestionario.innerHTML += `${mensagem}!`;
 
         respostaQuestionario.innerHTML += `<br> <br>Você votou ${contTentativas} vezes <br> <br>
-                                            A sua média de tentativas é ${mediaDeTentativas } <br> <br>
+                                            A sua média de tentativas é ${mediaDeTentativas} <br> <br>
                                            <b> Recomendações de livros:</b> ${livroEscolhidoRecomencao}`;
 
         listaEscolha = [];

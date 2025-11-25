@@ -65,6 +65,50 @@ body {
     font-weight: bold;
 }
 
+/* Categorias */
+
+#div_categorias {
+    display: flex;
+    width: 10%;
+    background-color: #ECEADE;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 2%;
+    font-size: 12px;
+    position: absolute;
+    box-shadow: 1px 1px 1px 1px #cfcdc1;
+    transition: 2s;
+}
+
+.categoriasPai {
+    display: flex;
+    justify-items: flex-start;
+    width: 25%;
+}
+
+.buttonCategoria {
+    display: flex;
+    border: none;
+    cursor: pointer;
+    background-color: #ECEADE;
+    justify-content: flex-start;
+    width: 100%%;
+}
+
+.botoesCategoria {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 90%;
+    padding: 4%;
+
+}
+
+.buttonCategoria:hover {
+    color: #899AB4;
+    font-weight: bold;
+}
+
 /* Header Branco - Cadastro e Login*/
 /* Pagina de cadastro */
 
@@ -188,6 +232,7 @@ body {
     justify-content: center;
     flex-direction: column;
     padding: 2%;
+
 
 }
 
@@ -575,29 +620,6 @@ body {
     color: #ffffff;
 }
 
-/* FORMULARIO */
-
-.alerta_erro {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.card_erro {
-    display: none;
-    background-color: #fff;
-    color: black;
-    width: 230px;
-    position: fixed;
-    border-radius: 4px;
-    border: #ED145B 3px solid;
-    padding: 10px;
-    margin-right: 10%;
-}
-
-.card_erro #mensagem_erro {
-    font-weight: 500;
-    font-size: 20px;
-}
 
 /* Questionário */
 
@@ -745,6 +767,7 @@ body {
     gap: 2%;
     justify-content: center;
     padding: 2%;
+    width: 75%;
 }
 
 #imagemAnneLendo {

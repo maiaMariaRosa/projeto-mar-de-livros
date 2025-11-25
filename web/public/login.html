@@ -56,12 +56,12 @@
         if (emailVar == "" || senhaVar == "") {
             // cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            //finalizarAguardar();
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+        //else {
+        //    setInterval(sumirMensagem, 5000)
+        //}
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -83,7 +83,7 @@
 
                 resposta.json().then(json => {
                     console.log(json);
-                    console.log(JSON.stringify(json));
+                    console.log(JSON.stringify(json[0]));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.idUsuario;
@@ -91,7 +91,7 @@
                     setTimeout(function () {
                         console.log('nova localizacao')
                         window.location = "./dashboard.html";
-                    }, 1000); // apenas para exibir o loading
+                    }, 1000); 
 
                 });
 
@@ -101,7 +101,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+                    //inalizarAguardar(texto);
                 });
             }
 
@@ -112,9 +112,6 @@
         return false;
     }
 
-    function sumirMensagem() {
-        // cardErro.style.display = "none"
-    }
     function categorias() {
 
     }
