@@ -146,36 +146,40 @@
     <!-- Aqui começa a sessão Questionário-->
     <div class="questionario">
         <div class="questionarioConteudo">
+            <div class="questionarioCointainer">
             <p class="tituloQuestionario">
                 Qual seu gênero de livro preferido?
             </p>
-            <div id="opcoes" class="opcoes"> <!--Romance / Terror / Fantasia / Ação -->
-                <span>
-                    <input type="checkbox" value="romance" id="check_primeiraOpcao" name="generoLivro" />
-                    <label for="check_primeiraOpcao" class="option" id="labelOpcaoUm">Romance</label>
-                </span>
-                <span>
-                    <input type="checkbox" value="terror" id="check_segundaOpcao" name="generoLivro" />
-                    <label for="check_segundaOpcao" class="option" id="labelOpcaoDois">Terror</label>
-                </span>
-                <span>
-                    <input type="checkbox" value="fantasia" id="check_terceiraOpcao" name="generoLivro" />
-                    <label for="check_terceiraOpcao" class="option" id="labelOpcaoTres">Fantasia</label>
-                </span>
-                <span>
-                    <input type="checkbox" value="acao" id="check_quartaOpcao" name="generoLivro" />
-                    <label for="check_quartaOpcao" class="option" id="labelOpcaoQuatro">Ação</label>
-                </span>
-                <span>
-                    <input type="checkbox" value="ficcao_cientifica" id="check_quintaOpcao" name="generoLivro" />
-                    <label for="check_quintaOpcao" class="option" id="labelOpcaoQuinta">Ficcção Científica</label>
-                </span>
+                <div id="opcoes" class="opcoes"> <!--Romance / Terror / Fantasia / Ação -->
+                    <span>
+                        <input type="checkbox" value="romance" id="check_primeiraOpcao" name="generoLivro" />
+                        <label for="check_primeiraOpcao" class="option" id="labelOpcaoUm">Romance</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" value="terror" id="check_segundaOpcao" name="generoLivro" />
+                        <label for="check_segundaOpcao" class="option" id="labelOpcaoDois">Terror</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" value="fantasia" id="check_terceiraOpcao" name="generoLivro" />
+                        <label for="check_terceiraOpcao" class="option" id="labelOpcaoTres">Fantasia</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" value="acao" id="check_quartaOpcao" name="generoLivro" />
+                        <label for="check_quartaOpcao" class="option" id="labelOpcaoQuatro">Ação</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" value="ficcao_cientifica" id="check_quintaOpcao" name="generoLivro" />
+                        <label for="check_quintaOpcao" class="option" id="labelOpcaoQuinta">Ficcção Científica</label>
+                    </span>
+                </div>
+                <button class="button_comentar" id="button_votar" onclick="votar()">VOTAR</button>
+
+                <button class="button_comentar" id="button_resultado" onclick="verResultado()"><B>VER
+                        RESULTADO</B></button>
             </div>
-            <button class="button_comentar" id="button_votar" onclick="votar()">VOTAR</button>
-
-            <button class="button_comentar" id="button_resultado" onclick="verResultado()"><B>VER RESULTADO</B></button>
-
-            <div id="respostaQuestionario"></div>
+            <div class="respostaQuestionario" id="respostaQuestionario">
+                <img width="300px" src="../public/assets/imgs/before-sunrise-celine.gif" alt="">
+            </div>
         </div>
     </div>
 
@@ -220,7 +224,7 @@
 <script>
 
     var div_block = false;
-    
+
     function categorias() {
 
         if (div_block == true) {
@@ -325,13 +329,12 @@
     var listaEscolha = [];
 
     var contTentativas = 0;
-    var mediaDeTentativas = 0;
-
     var livroEscolhidoRecomencao = '';
 
     function votar() {
         var valoresCheckBox = document.getElementsByName('generoLivro');
 
+        // Descobrir quais valores foram selecionados
         for (var i = 0; i < valoresCheckBox.length; i++) {
             if (valoresCheckBox[i].checked) {
                 listaEscolha.push(valoresCheckBox[i].value);
@@ -365,8 +368,11 @@
     var tamanhoLivrosAcao = livrosAcao.length;
     var tamanhoLivrosFiccao = livrosFiccao.length;
 
-    // Cálculo para média de tentativas
-    mediaDeTentativas = contTentativas / listaEscolha.length;
+    var qtVezesApareceRomance = 0;
+    var qtVezesApareceTerror = 0;
+    var qtVezesApareceFantasia = 0;
+    var qtVezesApareceAcao = 0;
+    var qtVezesApareceFiccao = 0;
 
     function verResultado() {
 
@@ -381,31 +387,26 @@
 
         var tamanhoLista = listaEscolha.length;
 
-        var qtVezesApareceR = 0;
-        var qtVezesApareceT = 0;
-        var qtVezesApareceF = 0;
-        var qtVezesApareceA = 0;
-        var qtVezesApareceFC = 0;
 
         for (var k = 0; k < tamanhoLista; k++) {
             if (listaEscolha.includes('romance')) {
-                qtVezesApareceR += 1;
+                qtVezesApareceRomance += 1;
             }
 
             if (listaEscolha.includes('terror')) {
-                qtVezesApareceT += 1;
+                qtVezesApareceTerror += 1;
             }
 
             if (listaEscolha.includes('fantasia')) {
-                qtVezesApareceF += 1;
+                qtVezesApareceFantasia += 1;
             }
 
             if (listaEscolha.includes('acao')) {
-                qtVezesApareceA += 1;
+                qtVezesApareceAcao += 1;
             }
 
             if (listaEscolha.includes('ficcao_cientifica')) {
-                qtVezesApareceFC += 1;
+                qtVezesApareceFiccao += 1;
             }
         }
 
@@ -424,7 +425,7 @@
                 var numAleatorio0 = Math.floor(Math.random() * tamanhoLivrosRomance);
                 livroEscolhidoRecomencao += `<br> - ${livrosRomance[numAleatorio0]} - <i>Romance</i> <br>  <br>`;
 
-                tamanhoLista -= qtVezesApareceR;
+                tamanhoLista -= qtVezesApareceRomance;
             }
 
             if (listaEscolha.includes('terror')) {
@@ -434,7 +435,7 @@
                 var numAleatorio1 = Math.floor(Math.random() * tamanhoLivrosTerror);
                 livroEscolhidoRecomencao += `<br> - ${livrosTerror[numAleatorio1]} - <i>Terror</i> <br>  <br>`;
 
-                tamanhoLista -= qtVezesApareceT;
+                tamanhoLista -= qtVezesApareceTerror;
             }
 
             if (listaEscolha.includes('fantasia')) {
@@ -444,7 +445,7 @@
                 var numAleatorio2 = Math.floor(Math.random() * tamanhoLivrosFantasia);
                 livroEscolhidoRecomencao += `<br> - ${livrosFantasia[numAleatorio2]} - <i>Fantasia</i> <br>  <br>`;
 
-                tamanhoLista -= qtVezesApareceF;
+                tamanhoLista -= qtVezesApareceFantasia;
             }
 
             if (listaEscolha.includes('acao')) {
@@ -454,7 +455,7 @@
                 var numAleatorio3 = Math.floor(Math.random() * tamanhoLivrosAcao);
                 livroEscolhidoRecomencao += `<br> - ${livrosAcao[numAleatorio3]} - <i>Ação</i> <br>  <br>`;
 
-                tamanhoLista -= qtVezesApareceA;
+                tamanhoLista -= qtVezesApareceAcao;
             }
 
             if (listaEscolha.includes('ficcao_cientifica')) {
@@ -464,14 +465,29 @@
                 var numAleatorio4 = Math.floor(Math.random() * tamanhoLivrosFiccao);
                 livroEscolhidoRecomencao += `<br> - ${livrosFiccao[numAleatorio4]} - <i>Ficção científica</i> <br>  <br>`;
 
-                tamanhoLista -= qtVezesApareceFC;
+                tamanhoLista -= qtVezesApareceFiccao;
             }
         }
+
+        // Cálculo para porcentagem de tentativas
+
+        var totalEscolhas = qtVezesApareceAcao + qtVezesApareceFantasia + qtVezesApareceFiccao + qtVezesApareceRomance + qtVezesApareceTerror;
+        var P_romance = qtVezesApareceRomance / totalEscolhas * 100;
+        var P_terror = qtVezesApareceTerror / totalEscolhas * 100;
+        var P_fantasia = qtVezesApareceFantasia / totalEscolhas * 100;
+        var P_acao = qtVezesApareceAcao / totalEscolhas * 100;
+        var P_ficcao = qtVezesApareceFiccao / totalEscolhas * 100;
 
         respostaQuestionario.innerHTML += `${mensagem}!`;
 
         respostaQuestionario.innerHTML += `<br> <br>Você votou ${contTentativas} vezes <br> <br>
-                                            A sua média de tentativas é ${mediaDeTentativas} <br> <br>
+                                            Dentre as suas escolhas: <br>
+                                             ${P_romance.toFixed(2)}% foram de livros de romance. <br> 
+                                             ${P_acao.toFixed(2)}% foram de livros de romance. <br>
+                                             ${P_ficcao.toFixed(2)}% foram de livros de romance. <br>
+                                             ${P_terror.toFixed(2)}% foram de livros de romance. <br>
+                                             ${P_fantasia.toFixed(2)}% foram de livros de romance. <br> <br>
+
                                            <b> Recomendações de livros:</b> ${livroEscolhidoRecomencao}`;
 
         listaEscolha = [];

@@ -98,14 +98,10 @@ dtRegistro datetime default current_timestamp
 show tables;
 	desc comentarios;
 	desc livros;
-    desc genero;
-    desc resultadoPesquisa;
     desc usuario;
     
 select * from comentarios;
 select * from livros;
-select * from genero;
-select * from resultadoPesquisa;
 select * from usuario;
 
 

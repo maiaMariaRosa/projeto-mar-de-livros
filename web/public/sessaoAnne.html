@@ -15,7 +15,23 @@
     <div class="header">
         <img class="logo_header" src="./assets/imgs/mar-de-livros-com-fundo.png" alt="">
         <div class="botoes">
-            <button class="button" onclick="categorias()">CATEGORIAS</button>
+            <div>
+                <button class="button" onclick="categorias()">CATEGORIAS</button>
+                <div id="div_categorias" class="categorias" style="display: none;">
+                    <span class="botoesCategoria">
+                        <button class="buttonCategoria">Romance</button>
+                        <button class="buttonCategoria">Literatura Brasileira</button>
+                        <button class="buttonCategoria">Literatura Inlgesa</button>
+                        <button class="buttonCategoria">Terror/Suspense</button>
+                        <button class="buttonCategoria">Aventura/Ação</button>
+                        <button class="buttonCategoria">Infantil</button>
+                        <button class="buttonCategoria">Drama</button>
+                        <button class="buttonCategoria">História</button>
+                        <button class="buttonCategoria">Ficção Científica</button>
+                        <button class="buttonCategoria">Fantasia</button>
+                    </span>
+                </div>
+            </div>
             <button class="button" onclick="anne()">SESSÃO ANNE</button>
             <button class="button" onclick="index()">HOME</button>
 
@@ -54,9 +70,9 @@
     <div class="conteudoAnne">
         <div class="conteudoAnne1">
             <img class="imagemAnne" src="./assets/imgs/anne-imgs/bichinho-fofo.jpg" alt="">
-            <div class="texto">
+            <div class="2">
                 <p class="titulo" class="frank_ruhl_libre">A jornada de Anne Shirley</p>
-                <p>
+                <p class="textoJornadaAnne">
                     Anne é uma menina muito criativa e divertida! Nós a conhecemos quando ela tem 8 anos. Ela é orfã, e
                     por um imprevisto acaba ficando aos cuidados dos Cuthbert, que logo se apaixonam por sua
                     personalidade ativa e sonhadora.
@@ -88,16 +104,17 @@
 
 
     <div class="conteudoAnne">
-        <div class="texto">
+        <div class="texto2">
             <p class="titulo" class="frank_ruhl_libre">O anime</p>
 
             <div class="conteudoAnne2">
-                <div> 
-                    <img class="imagemAnne" id="imagemAnneLendo" src="./assets/imgs/anne-imgs/anne-lendo-com-gatinho.jpg"
-                        alt=""></div>
+                <div>
+                    <img class="imagemAnne" id="imagemAnneLendo"
+                        src="./assets/imgs/anne-imgs/anne-lendo-com-gatinho.jpg" alt="">
+                </div>
                 <div>
                     <p>
-                        Com somente um episódio até a publicação deste texto, o anime conta uma história agridoce. Ao
+                        Com somente um episódio até a publicação deste 2, o anime conta uma história agridoce. Ao
                         mesmo
                         tempo em que o espectador se encanta com as genais analogias da jovem Anne, fica horrorizado com
                         tudo o que ela passou desde o nascimento. Após perder os pais ainda bebê, ela foi mandada ao
@@ -119,6 +136,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="anneGif">
+        <img width="400px" src="../public/assets/imgs/anne-imgs/anne-shirley.gif" alt="">
     </div>
 
     <!-- Aqui começa o footer -->
@@ -146,7 +167,20 @@
 </html>
 <script>
     // Ir para outras páginas
+    var div_block = false;
+
     function categorias() {
+
+        if (div_block == true) {
+            document.getElementById('div_categorias').style.display = "none";
+
+            div_block = false;
+
+        } else {
+            document.getElementById('div_categorias').style.display = "block";
+
+            div_block = true;
+        }
 
     }
 

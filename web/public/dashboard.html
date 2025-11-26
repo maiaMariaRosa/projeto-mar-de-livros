@@ -22,7 +22,23 @@
         <div class="header">
             <img class="logo_header" src="./assets/imgs/mar-de-livros-com-fundo.png" alt="">
             <div class="botoes">
-                <button class="button" onclick="categorias()">CATEGORIAS</button>
+                <div>
+                    <button class="button" onclick="categorias()">CATEGORIAS</button>
+                    <div id="div_categorias" class="categorias" style="display: none;">
+                        <span class="botoesCategoria">
+                            <button class="buttonCategoria">Romance</button>
+                            <button class="buttonCategoria">Literatura Brasileira</button>
+                            <button class="buttonCategoria">Literatura Inlgesa</button>
+                            <button class="buttonCategoria">Terror/Suspense</button>
+                            <button class="buttonCategoria">Aventura/Ação</button>
+                            <button class="buttonCategoria">Infantil</button>
+                            <button class="buttonCategoria">Drama</button>
+                            <button class="buttonCategoria">História</button>
+                            <button class="buttonCategoria">Ficção Científica</button>
+                            <button class="buttonCategoria">Fantasia</button>
+                        </span>
+                    </div>
+                </div>
                 <button class="button" onclick="anne()">SESSÃO ANNE</button>
                 <button class="button" onclick="index()">HOME</button>
 
@@ -156,7 +172,21 @@
     }
 
     // Ir para outras páginas
+
+    var div_block = false;
+
     function categorias() {
+
+        if (div_block == true) {
+            document.getElementById('div_categorias').style.display = "none";
+
+            div_block = false;
+
+        } else {
+            document.getElementById('div_categorias').style.display = "block";
+
+            div_block = true;
+        }
 
     }
 
@@ -287,17 +317,17 @@
 
     function mediaComentarios(dadosMediaComentarios) {
         if (dadosMediaComentarios < 5) {
-                    kpiMedia.innerHTML = `<div class="kpi_corVermelha" id = "kpi2" >
+            kpiMedia.innerHTML = `<div class="kpi_corVermelha" id = "kpi2" >
                                                 <h1 id="h1_kpi2">${dadosMediaComentarios}</h1>
                                                 <div>Quantidade de comentários por dia</div>
                                             </div > `
-        } else if ( dadosMediaComentarios < 10) {
-                    kpiMedia.innerHTML = `<div class="kpi_corAmarela" id = "kpi2" >
+        } else if (dadosMediaComentarios < 10) {
+            kpiMedia.innerHTML = `<div class="kpi_corAmarela" id = "kpi2" >
                                                 <h1 id="h1_kpi2">${dadosMediaComentarios}</h1>
                                                 <div>Quantidade de comentários por dia</div>
                                             </div > `
-        } else if ( dadosMediaComentarios > 10) {
-                    kpiMedia.innerHTML = `<div class="kpi_corVerde" id = "kpi2" >
+        } else if (dadosMediaComentarios > 10) {
+            kpiMedia.innerHTML = `<div class="kpi_corVerde" id = "kpi2" >
                                                 <h1 id="h1_kpi2">${dadosMediaComentarios}</h1>
                                                 <div>Quantidade de comentários por dia</div>
                                             </div > `

@@ -23,7 +23,23 @@
     </a>
 
     <div class="botoesCadastro" class="inter">
-      <button class="buttonCadastro" onclick="categorias()">CATEGORIAS</button>
+      <div>
+        <button class="buttonCadastro" onclick="categorias()">CATEGORIAS</button>
+        <div id="div_categorias" class="categorias" style="display: none;">
+          <span class="botoesCategoria">
+            <button class="buttonCategoria">Romance</button>
+            <button class="buttonCategoria">Literatura Brasileira</button>
+            <button class="buttonCategoria">Literatura Inlgesa</button>
+            <button class="buttonCategoria">Terror/Suspense</button>
+            <button class="buttonCategoria">Aventura/Ação</button>
+            <button class="buttonCategoria">Infantil</button>
+            <button class="buttonCategoria">Drama</button>
+            <button class="buttonCategoria">História</button>
+            <button class="buttonCategoria">Ficção Científica</button>
+            <button class="buttonCategoria">Fantasia</button>
+          </span>
+        </div>
+      </div>
       <button class="buttonCadastro" onclick="anne()">SESSÃO ANNE</button>
       <button class="buttonCadastro" onclick="login()">LOGIN</button>
 
@@ -47,7 +63,7 @@
     <input id="confirmacao_senha_input" class="input_cadastro" placeholder="********" type="password"> <br>
 
     <button class="buttonCadastrar" onclick="cadastrar()">CADASTRAR</button>
-    
+
   </div>
 </body>
 
@@ -81,9 +97,9 @@
       cpfVar == ""
 
     ) {
-        alert("Mensagem de erro para todos os campos em branco");
+      alert("Mensagem de erro para todos os campos em branco");
 
-      
+
       return false;
     } else if (
       nomeVar.length < 1 ||
@@ -95,9 +111,9 @@
 
       alert(`Todos campos devem estar preenchidos corretamente.`);
 
-      
+
       return false;
-    } 
+    }
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -117,33 +133,46 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          
+
           alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
-            
+
 
           setTimeout(() => {
             window.location = "login.html";
           }, "2000");
 
-          
+
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        
+
       });
 
     return false;
   }
 
- 
+
   function index() {
     window.location.href = 'index.html'
   }
-  
+
+  var div_block = false;
+
   function categorias() {
+
+    if (div_block == true) {
+      document.getElementById('div_categorias').style.display = "none";
+
+      div_block = false;
+
+    } else {
+      document.getElementById('div_categorias').style.display = "block";
+
+      div_block = true;
+    }
 
   }
 
