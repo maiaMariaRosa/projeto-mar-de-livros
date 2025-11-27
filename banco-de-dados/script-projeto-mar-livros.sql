@@ -108,12 +108,10 @@ select * from usuario;
 -- Selects para comentários na index
 select idComentario, comentario from comentarios;
 
-create view comentarioChatView as select idComentario, comentario from comentarios;
-
-  select comentario 
-	    from comentarios
-		order by dataHora desc
-        limit 5;
+select comentario 
+	from comentarios
+	order by dataHora desc
+	limit 5;
 
 select usuario.nome as NomeUser,
 		comentarios.comentario as Comentario
@@ -123,17 +121,6 @@ select usuario.nome as NomeUser,
         order by date(dataHora) desc
         limit 10;
         
-create view comentarioUser as 
-		select usuario.nome as NomeUser,
-		comentarios.comentario as Comentario
-        from comentarios
-        join usuario
-        on comentarios.fkUsuario = usuario.idUsuario
-        order by date(dataHora) desc
-        limit 10;
-        
-select * from comentarioUser;
-        
 -- Selects para comentários na dashboard
 
 select 
@@ -142,16 +129,6 @@ select
 	from comentarios
     group by dia
     order by dia asc limit 7;
-		
-
-create view comentarioDashboard as select 
-	count(idComentario), 
-	date(dataHora) as dia 
-	from comentarios
-    group by dia
-    order by dia asc limit 7;
-    
-select * from comentarioDashboard;
 
 -- Selects para KPI's
 
