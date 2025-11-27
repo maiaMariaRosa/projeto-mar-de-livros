@@ -39,6 +39,20 @@ INSERT INTO usuario (nome, email, cpf, senha) VALUES
 ('Vinícius Lopes', 'vinicius.lopes@email.com', '12312312399', 'senha019'),
 ('Luiza Assis', 'luiza.assis@email.com', '32132132188', 'senha020');
 
+-- Edição de Perfil
+
+create table edicaoPerfil (
+idEdicaoPerfil int auto_increment,
+biosDescricao varchar(200),
+biosLivros varchar(50),
+biosGeneros varchar(50),
+fkUsuario int,
+constraint fkUsuarioPerfil
+	foreign key (fkUsuario)
+		references usuario(idUsuario),
+primary key (idEdicaoPerfil, fkUsuario)
+);
+
 -- Comentários
 
 create table comentarios(
@@ -99,10 +113,13 @@ show tables;
 	desc comentarios;
 	desc livros;
     desc usuario;
+    desc edicaoPerfil;
     
 select * from comentarios;
 select * from livros;
 select * from usuario;
+select * from edicaoPerfil;
+
 
 
 -- Selects para comentários na index
@@ -142,4 +159,19 @@ select round(avg(qtdPorDia),2) from
 		group by date(dataHora)) 
 			as mediaDeComentarios;
             
+-- Insert para entrada da edição do perfil
+
+-- insert into edicaoPerfil (biosLivro, biosGenero, biosDescricao, fkUsuario) values
+
+-- Select para edição de perfil
+
+select e.biosDescricao as Descricao,
+		e.biosLivros as LivroPreferido,
+        e.biosGeneros as GeneroPreferido
+        from edicaoPerfil as e
+        where fkUsuario = 1
+        order by biosDescricao desc
+        limit 1;-- idUsuario
+        
+
 		
