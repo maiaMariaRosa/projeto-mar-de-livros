@@ -1,4 +1,4 @@
-var edicaoPerfilModel = require("../models/edicaoPerfilModel");
+var edicaoPerfilModel = require("./edicaoPerfilModel");
 
 function editar(req, res) {
     var livro = req.body.livroServer;
@@ -34,7 +34,9 @@ function editar(req, res) {
 }
 
 function listarEdicaoPerfil(req, res) {
-    edicaoPerfilModel.listarEdicaoPerfil().then(function (resultado) {
+  var idUsuario = sessionStorage.NOME_USUARIO;
+
+    edicaoPerfilModel.listarEdicaoPerfil(idUsuario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

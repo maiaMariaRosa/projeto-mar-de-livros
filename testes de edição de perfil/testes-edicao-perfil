@@ -1,0 +1,91 @@
+
+//html
+function editar() {
+
+        var livro = input_livro.value.trim();
+        var genero = input_genero.value.trim();
+        var descricao = textarea_descricao.value.trim();
+        var fkUsuario = sessionStorage.ID_USUARIO;
+
+        fetch("/edicaoPerfil/editar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+
+                livroServer: livro,
+                generoServer: genero,
+                descricaoServer: descricao,
+                idUsuarioServer: fkUsuario
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    alert('Descrição de perfil alterada com sucesso!')
+
+                } else {
+
+                    alert("Houve um erro ao tentar alterar a descrição!")
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
+    }
+
+function prepararDadosEdicao(resposta) {
+        console.log('estou aquiiiiiiiiiiiii')
+
+        console.log(dadosTratados.data)
+        var dadosTratados = {
+            data: [],
+            data: []
+        }
+
+        for (var i = 0; i < resposta.length; i++) {
+            dadosTratados.data.push(resposta[i].Descricao);
+            dadosTratados.data.push(resposta[i].LivroPreferido);
+            dadosTratados.data.push(resposta[i].GeneroPreferido);
+
+        }
+
+        return dadosTratados;
+    }
+
+    function receberUltimaEdicao() {
+        var fkUsuario = sessionStorage.ID_USUARIO;
+        console.log('entrei na função receber ultima edição')
+
+        fetch(`/edicaoPerfil/listarEdicaoPerfil/${fkUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    console.log('Teste')
+
+                    listarEdicaoPerfil(resposta[0].listarEdicaoPerfil)
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function listarEdicaoPerfil(resposta) {
+        console.log('Estou na procura da ultima edição de perfil!')
+        
+            div_biosDescricao.innerHTML += `<div class="input_descricao">
+                                            <b>Livro Preferido</b>${dadosTratados.LivroPreferido} <br>
+                                            <b>Gênero preferido:</b> ${dadosTratados.GeneroPreferido} <br> 
+                                            <b> Descrição: </b>${dadosTratados.Descricao}</div>`
+    }
+
+   

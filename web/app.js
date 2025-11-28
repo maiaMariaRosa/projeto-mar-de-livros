@@ -19,8 +19,6 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var comentarioRouter = require("./src/routes/comentario");
 var comentariosIndexRouter = require("./src/routes/comentariosIndex");
-var edicaoPerfilRouter = require("./src/routes/edicaoPerfil");
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,9 +30,6 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/comentarios", comentarioRouter);
 app.use("/comentariosIndex", comentariosIndexRouter);
-app.use("/edicaoPerfil", edicaoPerfilRouter);
-
-
 
 app.listen(PORTA_APP, function () {
     console.log(`

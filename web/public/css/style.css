@@ -454,30 +454,8 @@ body {
   align-items: center;
 }
 
-.descricaoConteudo {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2%;
-}
-
-.inputDescricao {
-  display: flex;
-  flex-direction: row;
-  width: 50%;
-  gap: 2%;
-}
-
-.inputDescricaoPai {
-  display: flex;
-}
-
-.respostasBios {
-  display: flex;
-  flex-direction: column;
-  font-size: 20px;
-}
 /* grafico */
+
 .graficoPai {
   margin-top: 2%;
   display: flex;

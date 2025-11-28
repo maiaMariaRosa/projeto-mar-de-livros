@@ -50,37 +50,19 @@
         <div class="edicaoPerfil">
             <div class="container3">
                 <img class="img_sobreMim" src="./assets/imgs/minha-foto-perfil - Editado.jpg" alt="">
-                <p id="b_usuario"><b><i>Maria Rosa </i></b></p>
+                <p><b><i>Maria Rosa </i></b></p>
             </div>
             <div class="descricao">
                 <h2>Descrição</h2>
-                <div class="descricaoConteudo" id="id_descricaoConteudo">
-                    <div class="inputDescricaoPai" id="inputDescricaoPai">
-                        <div class="inputDescricao" id="livroPreferido">
-                            <b>Livro preferido:</b>
-                            <input class="input_descricao" type="text" id="input_livro">
-                        </div>
-                        <div class="input_descricao" id="generoPreferido">
-                            <b>Gênero de leitura preferido:</b>
-                            <input class="input_descricao" type="text" id="input_genero">
-                        </div>
-                    </div>
-
-                    <b>Bios:</b>
-                    <input style="display: block; width: 100%; height: 100px;"
-                        placeholder="Escreva um pouco sobre você..." name="descricao" 
-                        id="textarea_descricao" maxlength="200"></input>
-                    <button class="button_comentar" onclick="editar()">EDITAR</button>
-                    <br>
-                </div>
-
-                <div class="respostasBios">
-                    <!-- <div class="input_descricao" id="div_LivroPreferido"></div>
-                    <div class="input_descricao" id="div_generoLeitura"></div> -->
-                    <div class="input_descricao" id="div_biosDescricao"></div>
-                </div>
-
-
+                <p>Meu nome é Maria Rosa, tenho 22 anos, meu signo é de áries, caso isso seja importante para
+                    alguém. E eu amo ler! Sério, amo mesmo, eu leio qualquer coisa, eu preciso da leitura, porque
+                    ver letras juntas formando palavras e frases é como ter ar para respirar. Mas claro, nesses anos
+                    como leitora eu descobri alguns nichos dos quais eu mais gosto, eu adoro livros de romance, e se
+                    envolve filosofia tem mais chance de me interessar e eu amo livros que fazem ligações e conexões
+                    de conhecimento, como por exemplo o Tao da Física de Fritjof Capra, um livro que mostra uma
+                    conexão entre o estudo da física e as religiões orientais. Aqui neste site pretendo compartilhar
+                    meus pontos de vista!
+                </p>
             </div>
         </div>
         </div>
@@ -112,10 +94,6 @@
                 </div>
 
                 <div id="kpiContagem">
-                    <!-- <div class="kpi_corVermelha" id="kpi2">
-                        <h1 id="h1_kpi2"></h1>
-                        <div>Quantidade de comentários por dia</div>
-                    </div> -->
                 </div>
 
                 <div id="kpiMedia">
@@ -133,8 +111,7 @@
     window.onload = function () {
         obterDados(),
             receberContagem(),
-            receberMediaComentarios();
-
+            receberMediaComentarios()
     }
 
     // Função para Bios
@@ -191,7 +168,6 @@
         }
 
     }
-
 
     function anne() {
         window.location.href = 'sessaoAnne.html';
@@ -321,71 +297,20 @@
         if (dadosMediaComentarios < 5) {
             kpiMedia.innerHTML = `<div class="kpi_corVermelha" id = "kpi2" >
                                                 <h1 id="h1_kpi2">${dadosMediaComentarios}</h1>
-                                                <div>Quantidade de comentários por dia</div>
+                                                <div>Média de comentários por dia</div>
                                             </div > `
         } else if (dadosMediaComentarios < 10) {
             kpiMedia.innerHTML = `<div class="kpi_corAmarela" id = "kpi2" >
                                                 <h1 id="h1_kpi2">${dadosMediaComentarios}</h1>
-                                                <div>Quantidade de comentários por dia</div>
+                                                <div>Média de comentários por dia</div>
                                             </div > `
         } else if (dadosMediaComentarios > 10) {
             kpiMedia.innerHTML = `<div class="kpi_corVerde" id = "kpi2" >
                                                 <h1 id="h1_kpi2">${dadosMediaComentarios}</h1>
-                                                <div>Quantidade de comentários por dia</div>
+                                                <div>Média de comentários por dia</div>
                                             </div > `
         }
 
-    }
-
-    // Funções para inserção da descrição no banco de dados
-
-    
-    function editar() {
-
-        var livro = input_livro.value.trim();
-        var genero = input_genero.value.trim();
-        var descricao = textarea_descricao.value.trim();
-        var fkUsuario = sessionStorage.ID_USUARIO;
-
-        fetch("/edicaoPerfil/editar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-
-                livroServer: livro,
-                generoServer: genero,
-                descricaoServer: descricao,
-                idUsuarioServer: fkUsuario
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    alert('Descrição de perfil alterada com sucesso!')
-
-                } else {
-
-                    alert("Houve um erro ao tentar alterar a descrição!") 
-                }
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-
-        return false;
-    }
-
-    function ultimaEdicao(resposta) {
-        console.log('Estou na procura da ultima edição de perfil!')
-
-        for (var i = 0; i < resposta.length; i++) {
-            div_biosDescricao.innerHTML += `<div class="input_descricao"><b>Livro Preferido</b>${resposta[i].biosLivros} <br>
-                                            <b>Gênero preferido:</b> ${resposta[i].biosGeneros} <br> 
-                                            <b> Descrição: </b>${resposta[i].biosDescricao}</div>`
-        }
     }
 
 </script>
