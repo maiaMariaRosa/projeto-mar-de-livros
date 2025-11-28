@@ -89,7 +89,7 @@
                     <br> É divertido que mesmo o autor dando uma chance de mudança de vida muito fácil para o
                     personagem, ainda sim você consegue se convencer e se entreter com a história.
                     <br> É um livro cheio de filosofia e questões que instigam o pensamento sobre o significado da vida,
-                    viver emm sociedade, a mentira, e nossa pŕopria identidade e como isso influencia nossas escolhas,
+                    viver em sociedade, a mentira, e nossa pŕopria identidade e como isso influencia nossas escolhas,
                     nossas vidas.
                 </p>
             </div>
@@ -186,11 +186,11 @@
     <!-- Aqui começa a sessão playlist-->
     <div class="playlist">
         <p class="frank_ruhl_libre" class="tituloPrincipal">Nossa playlist:</p>
-        <div><iframe data-testid="embed-iframe" style="border-radius:12px"
+        <!-- <div><iframe data-testid="embed-iframe" style="border-radius:12px"
                 src="https://open.spotify.com/embed/playlist/3Rc0WOCujl7pMvsp8kq8n3?utm_source=generator" width="40%"
                 height="352" frameBorder="0" allowfullscreen=""
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"></iframe></div>
+                loading="lazy"></iframe></div> -->
 
     </div>
     <!-- Aqui termina a sessão playlist-->
@@ -308,8 +308,7 @@
 
             if (resposta.ok) {
                 window.alert("Post realizado com sucesso!");
-                limparFormulario();
-                finalizarAguardar();
+                obterDados();
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -347,6 +346,8 @@
         contTentativas++
 
         livroEscolhidoRecomencao = '';
+
+        alert('Você votou!');
     }
 
     // Lista de recomendações

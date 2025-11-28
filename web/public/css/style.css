@@ -200,6 +200,10 @@ body {
   padding: auto;
 }
 
+body:hover {
+  scroll-behavior: smooth;
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -335,6 +339,10 @@ body {
   height: 100%;
   border-top: solid #000000 1px;
   align-content: flex-end;
+}
+
+#sobreMim:hover{
+  scroll-behavior: smooth;
 }
 
 .sobreMim {

@@ -10,7 +10,7 @@ function listarComentariosDia() {
 	                    date(dataHora) as dia 
 	                    from comentarios
                         group by dia
-                          order by dia asc limit 7;
+                          order by dia asc;
                     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

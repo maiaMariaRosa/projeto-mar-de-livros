@@ -10,7 +10,7 @@ function listarComentariosIndex() {
                     from comentarios
                     join usuario
                     on comentarios.fkUsuario = usuario.idUsuario
-                    order by date(dataHora) desc
+                    order by idComentario desc
                     limit 10;
             `;
 

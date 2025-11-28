@@ -72,7 +72,7 @@
 
         <!-- Aqui começa o gráfico-->
         <div class="graficoPai">
-            <div class="grafico">
+            <div class="grafico"><h2>Quantidade de comentários por dia</h2>
                 <div>
                     <canvas class="myChart" id="myChart"></canvas>
                 </div>
@@ -109,7 +109,7 @@
 <script>
 
     window.onload = function () {
-        obterDados(),
+            obterDados(),
             receberContagem(),
             receberMediaComentarios()
     }
@@ -223,7 +223,16 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                    var dados = prepararDados(resposta);
+                    var dados = [];
+                    
+
+                    for (var i = 10; i > 0; i--) {
+                        var elemento = resposta[resposta.length - i]
+                        console.log(elemento);
+                        dados.push(elemento);
+                    }
+
+                    dados = prepararDados(dados);
                     plotarGrafico(dados);
                 });
             } else {
@@ -294,12 +303,12 @@
     }
 
     function mediaComentarios(dadosMediaComentarios) {
-        if (dadosMediaComentarios < 5) {
+        if (dadosMediaComentarios < 2) {
             kpiMedia.innerHTML = `<div class="kpi_corVermelha" id = "kpi2" >
                                                 <h1 id="h1_kpi2">${dadosMediaComentarios}</h1>
                                                 <div>Média de comentários por dia</div>
                                             </div > `
-        } else if (dadosMediaComentarios < 10) {
+        } else if (dadosMediaComentarios < 5) {
             kpiMedia.innerHTML = `<div class="kpi_corAmarela" id = "kpi2" >
                                                 <h1 id="h1_kpi2">${dadosMediaComentarios}</h1>
                                                 <div>Média de comentários por dia</div>
