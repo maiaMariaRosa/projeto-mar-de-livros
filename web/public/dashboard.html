@@ -114,42 +114,6 @@
             receberMediaComentarios()
     }
 
-    // Função para Bios
-
-    // listaBio = {
-    //     livro: [],
-    //     genero: [],
-    //     descricao: []
-    // };
-
-    // function editar() {
-
-    //     var livro = input_livro.value.trim();
-    //     var genero = input_genero.value.trim();
-    //     var descricao = textarea_descricao.value.trim();
-
-    //     if (livro != '' || genero != '' || descricao != '') {
-
-    //         listaBio.livro.push(livro);
-    //         listaBio.genero.push(genero);
-    //         listaBio.descricao.push(descricao);
-
-    //         console.log('Bios cadastrada com sucesso!');
-    //     } else {
-    //         console.log('Erro')
-    //     }
-
-    //     for (var i = 0; i < listaBio.livro.length; i++) {
-
-    //         div_LivroPreferido.innerHTML = `<b> Livro preferido: </b> ${listaBio.livro[listaBio.livro.length - 1]}`;
-    //         div_generoLeitura.innerHTML = `<b> Gênero de leitura preferido: </b> ${listaBio.genero[listaBio.descricao.length - 1]}`;
-    //         div_biosDescricao.innerHTML = `<b> Descrição: </b> ${listaBio.descricao[listaBio.descricao.length - 1]}`;
-
-    //     }
-
-    // }
-
-
     // Ir para outras páginas
 
     var div_block = false;
@@ -243,8 +207,9 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
-
+ 
     // Funções para KPIs
+    
     function receberContagem() {
         fetch(`/comentarios/countComentarios`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {

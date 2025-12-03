@@ -119,17 +119,18 @@ select usuario.nome as NomeUser,
         from comentarios
         join usuario
         on comentarios.fkUsuario = usuario.idUsuario
-        order by date(dataHora) desc
+        order by idComentario desc
         limit 10;
         
 -- Selects para comentários na dashboard
+select * from comentarios;
 
 select 
 	count(idComentario), 
 	date(dataHora) as dia 
 	from comentarios
     group by dia
-    order by dia asc limit 7;
+    order by dia asc;
 
 -- Selects para KPI's
 

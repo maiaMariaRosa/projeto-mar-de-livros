@@ -22,7 +22,7 @@ function cadastrarComentario(req, res) {
             );
     }
 }
-
+ 
 
 function listarComentariosIndex(req, res) {
     comentariosIndexModel.listarComentariosIndex().then(function (resultado) {
@@ -36,7 +36,7 @@ function listarComentariosIndex(req, res) {
         console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
-}
+} 
 
 module.exports = {
     listarComentariosIndex,

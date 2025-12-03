@@ -29,4 +29,4 @@ function cadastrarComentario(comentario, idUsuario) {
 module.exports = {
   listarComentariosIndex,
   cadastrarComentario,
-};
+}; 

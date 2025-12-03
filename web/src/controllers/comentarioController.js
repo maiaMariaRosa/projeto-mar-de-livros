@@ -13,7 +13,7 @@ function listarComentariosDia(req, res) {
         res.status(500).json(erro.sqlMessage);
     });
 }
-
+ 
 function kpiMediaPorDia(req, res) {
     comentarioModel.kpiMediaPorDia().then(function (resultado) {
         if (resultado.length > 0) {
